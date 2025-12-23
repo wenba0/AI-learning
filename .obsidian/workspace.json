@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "5. paper-reading/11.md",
+                "file": "0. foundations/11.md",
                 "mode": "source",
                 "source": false
               },
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "5. paper-reading/11.md",
+                "file": "0. foundations/11.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -113,7 +113,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "5. paper-reading/11.md",
+                "file": "0. foundations/11.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -156,7 +156,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "5. paper-reading/11.md",
+                "file": "0. foundations/11.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -196,8 +196,11 @@
   },
   "active": "91d6f7fd7e0293d4",
   "lastOpenFiles": [
-    "1.md",
+    "3. inference/量化",
+    "0. foundations/tools/linux命令.md",
     "5. paper-reading/11.md",
+    "0. foundations/tools",
+    "1.md",
     "3. inference/inference-acceleration/PA-and-FA.md"
   ]
 }

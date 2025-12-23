@@ -1,1 +1,5 @@
-{}
+{
+  "showRibbon": true,
+  "baseFontSize": 19,
+  "nativeMenus": false
+}
