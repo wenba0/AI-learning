@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "0. foundations/11.md",
+                "file": "1. models/LLM/Qwen.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "11"
+              "title": "Qwen"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "0. foundations/11.md",
+                "file": "1. models/LLM/Qwen.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "11 的反向链接列表"
+              "title": "Qwen 的反向链接列表"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "0. foundations/11.md",
+                "file": "1. models/LLM/Qwen.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "11 的出链列表"
+              "title": "Qwen 的出链列表"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "0. foundations/11.md",
+                "file": "1. models/LLM/Qwen.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "11 的大纲"
+              "title": "Qwen 的大纲"
             }
           },
           {
@@ -196,6 +196,8 @@
   },
   "active": "91d6f7fd7e0293d4",
   "lastOpenFiles": [
+    "0. foundations/11.md",
+    "1. models/LLM/Qwen.md",
     "3. inference/量化",
     "0. foundations/tools/linux命令.md",
     "5. paper-reading/11.md",
