@@ -196,8 +196,9 @@
   },
   "active": "91d6f7fd7e0293d4",
   "lastOpenFiles": [
-    "0. foundations/11.md",
+    "1. models/LLM/11.md",
     "1. models/LLM/Qwen.md",
+    "0. foundations/11.md",
     "3. inference/量化",
     "0. foundations/tools/linux命令.md",
     "5. paper-reading/11.md",
