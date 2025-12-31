@@ -1,2 +1,6 @@
-以Qwen3-30B-A3B为例，大体推理流程与MOE模块如下所示
-![Qwen3-30B-A3B MOE架构|675](../../images/moe.png)
+以Qwen3-30B-A3B为例，大体推理流程与MOE模块如下所示:
+- 对于输入的的input_ids，首先将其转化为embedding，再经过每一层的decoder layer，最后经过norm和lm_head得到下一个输出token的概率，再通过sampler提取token
+- 对于每一层的decoder layer，里面就是正常的attention、norm等模块，MoE模型便是将原始的mlp替换为moe模块
+- 对于moe模块，首先通过gate(linear)层获取所有experts的logits，输入2048输出128；结果通过softmax来获取每个expert的权重，并通过topk选出概率最大的top_k个expert；
+- 遍历所有被选中的expert，对于每个expert，提取对应的hidden_states（current_state）送入expert层进行计算，输出结果与routing_weights进行点乘；初始化一个全0的final_hidden_states，将每个expert计算的结果add到对应位置，
+![Qwen3-30B-A3B MOE架构|1125](../../images/moe.png)
