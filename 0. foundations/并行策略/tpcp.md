@@ -14,6 +14,7 @@ MLP的tp过程如下，权重矩阵A列切，权重矩阵B行切，最终得到�
 + 有两个矩阵乘 **第一个列切，第二个行切， 不切输入**，最后需要一个all-reduce（上图）
 
 ![Megatron-LM sp|725](../../images/20260105154315.png)
+hhh
 ![Megatron-LM sp|925](../../images/20260105154327.png)
 attention的tp类似：attention中一般有个qkv_proj和o_proj，对这两个过程的权重进行切分， 输入不动，以qwen2为例，Qwen2Attention代码如下：
 ```python
