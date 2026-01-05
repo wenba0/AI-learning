@@ -10,6 +10,22 @@
           {
             "id": "82b85ef570233fb7",
             "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "0. foundations/算子&模块/MOE.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "MOE"
+            }
+          },
+          {
+            "id": "7c54b0e6b472f823",
+            "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
@@ -21,7 +37,8 @@
               "title": "tpcp"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -194,14 +211,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "82b85ef570233fb7",
+  "active": "a556114277cb11f9",
   "lastOpenFiles": [
+    "0. foundations/算子&模块/MOE.md",
+    "0. foundations/并行策略/tpcp.md",
+    "Pasted image 20260105155832.png",
     "Pasted image 20260105154327.png",
     "Pasted image 20260105154315.png",
     "Pasted image 20260105154138.png",
     "Pasted image 20260105153827.png",
-    "0. foundations/并行策略/tpcp.md",
-    "0. foundations/算子&模块/MOE.md",
     "1. models/LLM/11.md",
     "1. models/LLM/Qwen.md",
     "0. foundations/11.md",
