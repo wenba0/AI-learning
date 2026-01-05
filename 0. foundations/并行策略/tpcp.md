@@ -3,11 +3,11 @@ megatron tp就是对连续的两个矩阵乘，第一个列切  第二个行切�
 tp只对attention内和mlp内的权重有效，
 #### Megatron-LM tp （矩阵乘切分 降低权重占用）
 对attention和mlp两个模块的权重进行切分，这两个模块都是有矩阵乘的部分，tp的前提的矩阵乘运算的可切分性；
-![[Pasted image 20260105153827.png|875]]
+![Megatron-LM tp|1125](../../images/20260105153827.png)
 以MLP为例，计算过程如下
 $$Z=Dropout(GeLU(XA)B)$$
 MLP的tp过程如下，权重矩阵A列切，权重矩阵B行切，最终得到的结果需要进行reduce(求和)
-![[Pasted image 20260105154138.png|950]]
+![Megatron-LM tp|1125](../../images/20260105154138.png)
 矩阵乘可切分性如下所示：
 + 只有一个矩阵乘 **权重列切 输入不需要切** 需要all-gather（图2右）
 + 只有一个矩阵乘 **权重行切 输入需要行切** 需要all-reduce（下图1和图2左）
