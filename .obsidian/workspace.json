@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "0. foundations/ops/MOE.md",
+                "file": "0. foundations/并行策略/tp sp.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "MOE"
+              "title": "tp sp"
             }
           }
         ]
@@ -196,23 +196,25 @@
   },
   "active": "82b85ef570233fb7",
   "lastOpenFiles": [
+    "0. foundations/11.md",
+    "0. foundations/并行策略/tp sp.md",
+    "0. foundations/并行策略",
+    "0. foundations/算子/MOE.md",
     "0. foundations/ops/Pasted image 20251231153959.png",
-    "0. foundations/ops/MOE.md",
     "qwen3-moe-arch.png.md",
     "images",
     "Pasted image 20251231153959 1.png",
     "images/moe.png",
     "3. inference/inference-engine/vllm.md",
-    "0. foundations/ops",
+    "0. foundations/算子",
     "3. inference/量化/qwen2.5-VL量化.md",
     "1. models/LLM/Qwen.md",
     "3. inference/inference-acceleration/image.png",
     "1. models/LLM/11.md",
-    "0. foundations/11.md",
     "3. inference/量化",
-    "0. foundations/tools/linux命令.md",
+    "0. foundations/工具/linux命令.md",
     "5. paper-reading/11.md",
-    "0. foundations/tools",
+    "0. foundations/工具",
     "1.md",
     "3. inference/inference-acceleration/PA-and-FA.md"
   ]
