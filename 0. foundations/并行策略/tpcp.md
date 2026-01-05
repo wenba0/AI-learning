@@ -44,7 +44,7 @@ Attention模块的tp方案如下所示，最后只需要一个all_reduce
 回头看上述的tp方案，只是对attention和mlp模块的linear权重进行了切分，attention和MLP模块的输入输出都是完整的，去做layernorm dropout等操作，输入长度特别长的情况下，这部分的激活值现存占比巨大，具体的激活值占用情况可参考[猛猿-图解大模型训练系列：序列并行1，Megatron SP - 知乎](https://zhuanlan.zhihu.com/p/4083427292)和原论文[Reducing Activation Recomputation in Large Transformer Models](https://arxiv.org/pdf/2205.05198)
 
 sp与tp搭配使用，整体如下
-![[../../images/20260105162859.png|1000]]
+![Megatron-LM sp|1125](../../images/20260105162859.png)
 Q: 为什么说megatron的sp必须与tp搭配使用，不能单独使用sp吗？
 A: sp将输入切分为在多个gpu上去做layernorm，已经有多个gpu了难道还把linear的权重都复制一份到每个gpu上吗？太挫了，所以对linear的权重也会切分，即sp tp一起使用，至于Ulysses的sp不和tp搭配使用 到时候具体看下他的方案
 
