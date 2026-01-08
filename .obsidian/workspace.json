@@ -65,8 +65,7 @@
               "title": "qwen2.5-VL量化"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -239,8 +238,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "2d2b79afd33a761b",
+  "active": "82b85ef570233fb7",
   "lastOpenFiles": [
+    "3. inference/量化/qwen2.5-VL量化.md",
     "0. foundations/并行策略/tpcp.md",
     "images/20260105154138.png",
     "0. foundations/工具/linux命令.md",
@@ -261,7 +261,6 @@
     "images/moe.png",
     "3. inference/inference-engine/vllm.md",
     "0. foundations/算子&模块",
-    "3. inference/量化/qwen2.5-VL量化.md",
     "3. inference/inference-acceleration/image.png",
     "3. inference/量化",
     "5. paper-reading/11.md",
