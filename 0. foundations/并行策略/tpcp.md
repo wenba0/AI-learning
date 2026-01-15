@@ -33,7 +33,7 @@ class Qwen2Attention(nn.Module):
         return output
 ```
 
-attention计算公式如下，一起写一下，不过与tp无关
+attention计算公式如下，顺手写一下，不过与tp无关
 $$
 \text{Attention}(Q, K, V) = \text{softmax}\left( \frac{QK^\top}{\sqrt{d_k}} \right) V
 $$
