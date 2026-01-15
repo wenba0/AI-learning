@@ -45,9 +45,13 @@ Attention模块的tp方案如下所示，最后只需要一个all_reduce
 
 回头看上述的tp方案，只是对attention和mlp模块的linear权重进行了切分，attention和MLP模块的输入输出都是完整的，去做layernorm dropout等操作，输入长度特别长的情况下，这部分的激活值现存占比巨大，具体的激活值占用情况可参考[猛猿-图解大模型训练系列：序列并行1，Megatron SP - 知乎](https://zhuanlan.zhihu.com/p/4083427292)和原论文[Reducing Activation Recomputation in Large Transformer Models](https://arxiv.org/pdf/2205.05198)
 
-sp与tp搭配使用，整体如下
+sp与tp搭配使用，整体如下，前向的过程中g表示all-gather，g̅表示reduce-scatter
 ![Megatron-LM sp|1125](../../images/20260105162859.png)
 Q: 为什么说megatron的sp必须与tp搭配使用，不能单独使用sp吗？
 A: sp将输入切分为在多个gpu上去做layernorm，已经有多个gpu了难道还把linear的权重都复制一份到每个gpu上吗？太挫了，所以对linear的权重也会切分，即sp tp一起使用，至于Ulysses的sp不和tp搭配使用 到时候具体看下他的方案
 
-该方案下的通信情况：
+该方案下的通信情况：保持了原有tp部分不变，对attention和MLP的输入/输出进行了sp处理，以MLP为例
++ MLP前的layernorm：输入进行了sp切分，输出也就是sp切分的，作为MLP的输入
++ MLP：MLP要求每张卡上都拿到完整的输入，进行一次**all-gather**，拿到完整的输入，然后正常进行tp运算
++ MLP后：按照tp的正常逻辑，MLP结束后需要进行一次*all-reduce*整合所有卡的输出结果(每张卡输出为 b,s,h)，但是当前引入sp的方案后，进行一次**reduce-scatter**（每张卡拿到的数据为 b, s/t, h），然后继续做dropout
+通信情况对比：tp场景下：2次all-reduce；tp+sp场景下：2次all-gather + 2次reduce-scatter
