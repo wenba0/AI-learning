@@ -72,3 +72,8 @@ Ulysses不对模型权重进行切分，每张卡上保存有全量的模型权�
 5. o_proj计算：正常计算，相当于输入左矩阵行切，权重右矩阵不变，输出仍为$(N/P, d)$
 6. MLP计算：mlp不需要计算token间的相关性，正常执行，和o_proj一样
 ![[Pasted image 20260121161604.png|775]]
+
+##### 差异对比
++ 经过QKV映射矩阵后，Ulysses会通过all-to-all每张卡上拿到$(N/P, d)$，megatron会通过allgather拿到全量的 $(N, d)$
++ attention正常计算，对于后面的o矩阵Ulysses不切分权重矩阵，因此需要一个all-to-all将输入转化为$(N/P, d)$，对于后面的MLP也正常计算就可以；megatron通过tp先列切映射矩阵，再对o矩阵行切，输出结果需要进行all reduce，后面一直到mlp前面的dropout、norm操作对特征维度操作，因此也可以需要切分，因此直接reducescatter使得每张卡上的激活值大幅降低；
++ 通信量的比对：megatron sp+tp：2次allgather2次reducescatter <----> Ulysses sp: 4次all-to-all（QKV映射矩阵输出结果都需要一个alltoall+o矩阵的输入）

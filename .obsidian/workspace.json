@@ -24,7 +24,7 @@
             }
           },
           {
-            "id": "ccab9ff036ef1aa5",
+            "id": "7c54b0e6b472f823",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -35,18 +35,6 @@
               },
               "icon": "lucide-file",
               "title": "tpcp"
-            }
-          },
-          {
-            "id": "7c54b0e6b472f823",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "images/20260105154138.png"
-              },
-              "icon": "lucide-image",
-              "title": "20260105154138"
             }
           },
           {
@@ -148,8 +136,7 @@
               "title": "tpcp 的大纲"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
@@ -269,17 +256,17 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "ccab9ff036ef1aa5",
+  "active": "7c54b0e6b472f823",
   "lastOpenFiles": [
+    "images/20260105154138.png",
+    "Pasted image 20260115165056.png",
+    "0. foundations/并行策略/tpcp.md",
     "Pasted image 20260121161604.png",
     "Pasted image 20260121155955.png",
-    "Pasted image 20260115165056.png",
     "3. inference/inference-acceleration/常见特性.md",
     "3. inference/量化/qwen2.5-VL量化.md",
-    "0. foundations/并行策略/tpcp.md",
     "images/20260115152209.png",
     "3. inference/基础特性",
-    "images/20260105154138.png",
     "0. foundations/工具/linux命令.md",
     "0. foundations/算子&模块/MOE.md",
     "images/20260105154327.png",
@@ -291,7 +278,6 @@
     "1. models/LLM/Qwen.md",
     "0. foundations/11.md",
     "0. foundations/并行策略",
-    "0. foundations/ops/Pasted image 20251231153959.png",
     "qwen3-moe-arch.png.md",
     "images",
     "3. inference/inference-engine/vllm.md",
