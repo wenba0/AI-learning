@@ -42,7 +42,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "0. foundations/并行策略/tpcp.md",
+                "file": "3. inference/inference-acceleration/tpcp.md",
                 "mode": "source",
                 "source": true
               },
@@ -50,9 +50,23 @@
               "icon": "lucide-file",
               "title": "tpcp"
             }
+          },
+          {
+            "id": "386ddf95bfb3b84a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3. inference/inference-acceleration/常见特性.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "常见特性"
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -111,13 +125,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "0. foundations/并行策略/tpcp.md",
+                "file": "3. inference/inference-acceleration/常见特性.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "tpcp 的大纲"
+              "title": "常见特性 的大纲"
             }
           }
         ]
@@ -240,17 +254,17 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "39c977e9ba4a1f7d",
+  "active": "386ddf95bfb3b84a",
   "lastOpenFiles": [
+    "3. inference/inference-acceleration/tpcp.md",
+    "3. inference/inference-acceleration/常见特性.md",
     "3. inference/量化/qwen2.5-VL量化.md",
-    "0. foundations/并行策略/tpcp.md",
     "0. foundations/算子&模块/MOE.md",
     "images/20260121161604.png",
     "images/20260121155955.png",
     "images/20260115165056.png",
     "images/moe.png",
     "images/20260105154138.png",
-    "3. inference/inference-acceleration/常见特性.md",
     "images/20260115152209.png",
     "3. inference/基础特性",
     "0. foundations/工具/linux命令.md",
