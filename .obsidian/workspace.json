@@ -27,14 +27,12 @@
             "id": "7c54b0e6b472f823",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "0. foundations/并行策略/tpcp.md",
-                "mode": "source",
-                "source": false
+                "file": "images/20260121161604.png"
               },
-              "icon": "lucide-file",
-              "title": "tpcp"
+              "icon": "lucide-image",
+              "title": "20260121161604"
             }
           },
           {
@@ -45,8 +43,8 @@
               "type": "markdown",
               "state": {
                 "file": "0. foundations/并行策略/tpcp.md",
-                "mode": "source",
-                "source": false
+                "mode": "preview",
+                "source": true
               },
               "pinned": true,
               "icon": "lucide-file",
@@ -68,7 +66,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -256,24 +254,24 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "7c54b0e6b472f823",
+  "active": "39c977e9ba4a1f7d",
   "lastOpenFiles": [
-    "images/20260105154138.png",
-    "Pasted image 20260115165056.png",
+    "0. foundations/算子&模块/MOE.md",
+    "images/20260121161604.png",
+    "images/20260121155955.png",
+    "images/20260115165056.png",
+    "images/moe.png",
     "0. foundations/并行策略/tpcp.md",
-    "Pasted image 20260121161604.png",
-    "Pasted image 20260121155955.png",
+    "images/20260105154138.png",
     "3. inference/inference-acceleration/常见特性.md",
     "3. inference/量化/qwen2.5-VL量化.md",
     "images/20260115152209.png",
     "3. inference/基础特性",
     "0. foundations/工具/linux命令.md",
-    "0. foundations/算子&模块/MOE.md",
     "images/20260105154327.png",
     "images/20260105153827.png",
     "images/20260105162859.png",
     "images/20260105155832.png",
-    "images/20260105154315.png",
     "1. models/LLM/11.md",
     "1. models/LLM/Qwen.md",
     "0. foundations/11.md",

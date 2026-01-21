@@ -55,7 +55,7 @@ A: sp将输入切分为在多个gpu上去做layernorm，已经有多个gpu了难
 + MLP：MLP要求每张卡上都拿到完整的输入，进行一次**all-gather**，拿到完整的输入，然后正常进行tp运算
 + MLP后：按照tp的正常逻辑，MLP结束后需要进行一次*all-reduce*整合所有卡的输出结果(每张卡输出为 b,s,h)，但是当前引入sp的方案后，进行一次**reduce-scatter**（每张卡拿到的数据为 b, s/t, h），然后继续做dropout
 通信情况对比：tp场景下：2次all-reduce；tp+sp场景下：2次all-gather + 2次reduce-scatter；两者通信量一致！但是单卡维护的激活值大幅降低
-![[Pasted image 20260115165056.png]]
+![Megatron-LM sp|1125](../../images/20260115165056.png)
 ### DeepSpeed-Ulysses SP （alltoall低通信）
 
 核心特点：
@@ -63,7 +63,7 @@ A: sp将输入切分为在多个gpu上去做layernorm，已经有多个gpu了难
 + all-to-all
 + Ulysses + zero3
 下图中：N = seq_len、 d = hidden_size、  P = gpu_num，通常head_num是P的整数倍
-![[Pasted image 20260121155955.png|750]]
+![Megatron-LM sp|1125](../../images/20260121155955.png)
 Ulysses不对模型权重进行切分，每张卡上保存有全量的模型权重（Zero3可能会改变），结合上图整体流程如下：
 1. 输入切分：输入为$(N, d)$,沿seq维度进行切分，每张卡上输入为$(N/P, d)$
 2. 计算QKV：每张卡上有完整的QKV映射矩阵权重，shape为$(d, d)$，输出结果为$(N/P, d)$
@@ -71,7 +71,7 @@ Ulysses不对模型权重进行切分，每张卡上保存有全量的模型权�
 4. attention计算：正常执行，输出shape仍为$(N, d/P)$，后面接一个o_proj，权重shape为$(d, d)$，因此需要再进行一个all-to-all，将每张卡上的数据转化为$(N/P, d)$
 5. o_proj计算：正常计算，相当于输入左矩阵行切，权重右矩阵不变，输出仍为$(N/P, d)$
 6. MLP计算：mlp不需要计算token间的相关性，正常执行，和o_proj一样
-![[Pasted image 20260121161604.png|775]]
+![Megatron-LM sp|1125](../../images/20260121161604.png)
 
 ##### 差异对比
 + 经过QKV映射矩阵后，Ulysses会通过all-to-all每张卡上拿到$(N/P, d)$，megatron会通过allgather拿到全量的 $(N, d)$
