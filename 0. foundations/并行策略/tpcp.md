@@ -56,3 +56,10 @@ A: sp将输入切分为在多个gpu上去做layernorm，已经有多个gpu了难
 + MLP后：按照tp的正常逻辑，MLP结束后需要进行一次*all-reduce*整合所有卡的输出结果(每张卡输出为 b,s,h)，但是当前引入sp的方案后，进行一次**reduce-scatter**（每张卡拿到的数据为 b, s/t, h），然后继续做dropout
 通信情况对比：tp场景下：2次all-reduce；tp+sp场景下：2次all-gather + 2次reduce-scatter；两者通信量一致！但是单卡维护的激活值大幅降低
 ![[Pasted image 20260115165056.png]]
+### DeepSpeed-Ulysses SP （alltoall低通信）
+
+核心特点：
++ 低通信量
++ all-to-all
++ Ulysses + zero3
+![[Pasted image 20260121155955.png|750]]

@@ -132,8 +132,24 @@
               "icon": "lucide-bookmark",
               "title": "书签"
             }
+          },
+          {
+            "id": "540c94eaf8306ccd",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "0. foundations/并行策略/tpcp.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "tpcp 的大纲"
+            }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -253,8 +269,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "ccab9ff036ef1aa5",
+  "active": "540c94eaf8306ccd",
   "lastOpenFiles": [
+    "Pasted image 20260121155955.png",
     "Pasted image 20260115165056.png",
     "3. inference/inference-acceleration/常见特性.md",
     "3. inference/量化/qwen2.5-VL量化.md",
@@ -277,7 +294,6 @@
     "qwen3-moe-arch.png.md",
     "images",
     "Pasted image 20251231153959 1.png",
-    "images/moe.png",
     "3. inference/inference-engine/vllm.md",
     "0. foundations/算子&模块",
     "3. inference/量化",
