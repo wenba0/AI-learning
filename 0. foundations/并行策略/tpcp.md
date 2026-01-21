@@ -62,4 +62,13 @@ A: sp将输入切分为在多个gpu上去做layernorm，已经有多个gpu了难
 + 低通信量
 + all-to-all
 + Ulysses + zero3
+下图中：N = seq_len、 d = hidden_size、  P = gpu_num，通常head_num是P的整数倍
 ![[Pasted image 20260121155955.png|750]]
+Ulysses不对模型权重进行切分，每张卡上保存有全量的模型权重（Zero3可能会改变），结合上图整体流程如下：
+1. 输入切分：输入为$(N, d)$,沿seq维度进行切分，每张卡上输入为$(N/P, d)$
+2. 计算QKV：每张卡上有完整的QKV映射矩阵权重，shape为$(d, d)$，输出结果为$(N/P, d)$
+3. all-to-all通信：下一步要去做attention计算了，要求seq维度完整，通过all-to-all通信后每张卡上的输入为$(N, d/P)$,这个地方还有一个reshape，如下图所示
+4. attention计算：正常执行，输出shape仍为$(N, d/P)$，后面接一个o_proj，权重shape为$(d, d)$，因此需要再进行一个all-to-all，将每张卡上的数据转化为$(N/P, d)$
+5. o_proj计算：正常计算，相当于输入左矩阵行切，权重右矩阵不变，输出仍为$(N/P, d)$
+6. MLP计算：mlp不需要计算token间的相关性，正常执行，和o_proj一样
+![[Pasted image 20260121161604.png|775]]

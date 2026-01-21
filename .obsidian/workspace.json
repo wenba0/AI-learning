@@ -269,8 +269,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "540c94eaf8306ccd",
+  "active": "ccab9ff036ef1aa5",
   "lastOpenFiles": [
+    "Pasted image 20260121161604.png",
     "Pasted image 20260121155955.png",
     "Pasted image 20260115165056.png",
     "3. inference/inference-acceleration/常见特性.md",
@@ -293,7 +294,6 @@
     "0. foundations/ops/Pasted image 20251231153959.png",
     "qwen3-moe-arch.png.md",
     "images",
-    "Pasted image 20251231153959 1.png",
     "3. inference/inference-engine/vllm.md",
     "0. foundations/算子&模块",
     "3. inference/量化",
