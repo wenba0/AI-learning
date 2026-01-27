@@ -4,3 +4,10 @@ reduce allreduce reduce-scatter的关系？以求和为例
 + reduce-scatter将其求和后 进行切分  每张卡上有求和之后的一部分shape
 
 alltoallv
+![[Pasted image 20260127164205.png]]
+所有的通信算子都需要传入通信组，ProcessGroup类
+torch.distributed.all_to_all(_output_tensor_list_, _input_tensor_list_, _group=None_, _async_op=False_） 
+通信组初始化通过；创建全局通信组
+torch.distributed.init_process_group(_backend=None_, _init_method=None_, _timeout=None_, _world_size=-1_, _rank=-1_, _store=None_, _group_name=''_, _pg_options=None_, _device_id=None_)
+创建子通信组
+torch.distributed.new_group(_ranks=None_, _timeout=None_, _backend=None_, _pg_options=None_, _use_local_synchronization=False_, _group_desc=None_, _device_id=None_)
