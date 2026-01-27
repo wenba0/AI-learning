@@ -66,7 +66,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -125,13 +125,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "0. foundations/comm op.md",
+                "file": "3. inference/inference-acceleration/tpcp.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "comm op 的大纲"
+              "title": "tpcp 的大纲"
             }
           }
         ],
@@ -255,19 +255,19 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "386ddf95bfb3b84a",
+  "active": "39c977e9ba4a1f7d",
   "lastOpenFiles": [
+    "0. foundations/常见模型结构.md",
+    "3. inference/inference-acceleration/tpcp.md",
+    "0. foundations/comm op.md",
     "Pasted image 20260127164205.png",
     "3. inference/inference-acceleration/PA-and-FA.md",
-    "0. foundations/comm op.md",
     "3. inference/inference-acceleration/常见特性.md",
     "3. inference/inference-acceleration/image.png",
     "3. inference/量化/qwen2.5-VL量化.md",
-    "0. foundations/常见模型结构.md",
     "0. foundations/linux命令.md",
     "0. foundations/数值精度.md",
     "images/20260122174009.png",
-    "3. inference/inference-acceleration/tpcp.md",
     "images/20260121161604.png",
     "images/20260121155955.png",
     "images/20260115165056.png",
@@ -276,7 +276,6 @@
     "images/20260115152209.png",
     "3. inference/基础特性",
     "images/20260105154327.png",
-    "images/20260105153827.png",
     "1. models/LLM/11.md",
     "1. models/LLM/Qwen.md",
     "0. foundations/并行策略",

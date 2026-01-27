@@ -78,3 +78,9 @@ Ulysses不对模型权重进行切分，每张卡上保存有全量的模型权�
 + 经过QKV映射矩阵后，Ulysses会通过all-to-all每张卡上拿到$(N/P, d)$，megatron会通过allgather拿到全量的 $(N, d)$
 + attention正常计算，对于后面的o矩阵Ulysses不切分权重矩阵，因此需要一个all-to-all将输入转化为$(N/P, d)$，对于后面的MLP也正常计算就可以；megatron通过tp先列切映射矩阵，再对o矩阵行切，输出结果需要进行all reduce，后面一直到mlp前面的dropout、norm操作对特征维度操作，因此也可以需要切分，因此直接reducescatter使得每张卡上的激活值大幅降低；
 + 通信量的比对：megatron sp+tp：2次allgather2次reducescatter <----> Ulysses sp: 4次all-to-all（QKV映射矩阵输出结果都需要一个alltoall+o矩阵的输入）按照mengyuan的分析，前者通信量为8Nd，后者为(8Nd)/P，可以看到随着卡数
+### 碎碎念
+TP带宽要求高，一般都是在一个节点内
+EP主要用alltoall，256专家，一共8卡，EP8，rank0: 0~31 rank1: 32~63
+
+稠密层（attention）的$DP = worldsize/(TP*PP*CP)$，有多少份完整的权重，DP就是多少!
+稀疏层（MoE）的$DP = worldsize/(TP*PP*CP*EP)$
