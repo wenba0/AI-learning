@@ -57,12 +57,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "0. foundations/常见模型结构.md",
+                "file": "0. foundations/comm op.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "常见模型结构"
+              "title": "comm op"
             }
           }
         ],
@@ -125,16 +125,17 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "0. foundations/常见模型结构.md",
+                "file": "0. foundations/comm op.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "常见模型结构 的大纲"
+              "title": "comm op 的大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -256,14 +257,16 @@
   },
   "active": "386ddf95bfb3b84a",
   "lastOpenFiles": [
+    "3. inference/inference-acceleration/PA-and-FA.md",
+    "0. foundations/comm op.md",
     "3. inference/inference-acceleration/常见特性.md",
     "3. inference/inference-acceleration/image.png",
-    "0. foundations/linux命令.md",
+    "3. inference/量化/qwen2.5-VL量化.md",
     "0. foundations/常见模型结构.md",
+    "0. foundations/linux命令.md",
     "0. foundations/数值精度.md",
     "images/20260122174009.png",
     "3. inference/inference-acceleration/tpcp.md",
-    "3. inference/量化/qwen2.5-VL量化.md",
     "images/20260121161604.png",
     "images/20260121155955.png",
     "images/20260115165056.png",
@@ -283,7 +286,6 @@
     "3. inference/量化",
     "5. paper-reading/11.md",
     "0. foundations/工具",
-    "1.md",
-    "3. inference/inference-acceleration/PA-and-FA.md"
+    "1.md"
   ]
 }
