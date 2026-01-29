@@ -45,9 +45,10 @@ $$
 + 公式11（分母）：$l(x^{(2)}) = {\sum_{i=1}^{B} f(x^{(2)})_{i}}$
 + 公式12（计算结果）：$softmax(x^{(2)})=\frac{f(x^{(2)})}{l(x^{(2)})}$
 更新全局标量
-+ 公式13 （更新最大值）$m_{max}^{new}=max(m_{max}, m(x^{(2)}))$，不能替换旧的$m_{max}$，还会用到的；
-+ 公式14（更新和）$l_{\text{all}}^{\text{new}} = e^{m_{\max} - m_{\max}^{\text{new}}} l_{\text{all}} + e^{m(x^{(2)}) - m_{\max}^{\text{new}}} l(x^{(2)})$ 
++ 公式13(更新最大值）$m_{max}^{new}=max(m_{max}, m(x^{(2)}))$，不能替换旧的$m_{max}$，还会用到的；
++ 公式14(更新和）$l_{\text{all}}^{\text{new}} = e^{m_{\max} - m_{\max}^{\text{new}}} l_{\text{all}} + e^{m(x^{(2)}) - m_{\max}^{\text{new}}} l(x^{(2)})$ 
 同时利用全局标量来更新分块1与分块2的softmax结果, softmax的分块计算动态更新, 数学上和全局统一计算的结果是一致的
++ 公式15(更新分块2)
 ##### flash attention计算流程
 标准attention计算过程如下，需要在HBM和SRAM之间搬来搬去，内存读写bound严重影响模型性能
 ![[Pasted image 20260129143709.png|1125]]
