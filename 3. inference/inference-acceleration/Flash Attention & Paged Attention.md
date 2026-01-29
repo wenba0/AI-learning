@@ -53,3 +53,6 @@ $$
 ![[Pasted image 20260129143709.png|1125]]
 flash attention利用分块计算的思路,将矩阵Q K V O分成很多小块逐步搬到SRAM中进行计算,减少了HBM的读写
 ![[Pasted image 20260129144144.png|1150]]
+O分块计算的结果写入HBM中,不需要再修改了,
+
+算子代码实现
