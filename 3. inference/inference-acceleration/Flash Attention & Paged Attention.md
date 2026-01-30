@@ -46,7 +46,7 @@ $$
 + 公式11（分母）：$l(x^{(2)}) = {\sum_{i=1}^{B} f(x^{(2)})_{i}}$
 + 公式12（计算结果）：$softmax(x^{(2)})=\frac{f(x^{(2)})}{l(x^{(2)})}$
 更新全局标量
-+ 公式13(更新最大值）$m\_{max}^{new}=max(m\_{max}, m(x^{(2)}))$，不能替换旧的$m_{max}$，还会用到的；
++ 公式13(更新最大值）$m\_{max}^{new}=max(m\_{max}, m(x^{(2)}))$，不能替换旧的$m_{max}$，还会用到的；dadas
 + 公式14(更新和）$l\_{\text{all}}^{\text{new}} = e^{m\_{\max} - m\_{\max}^{\text{new}}} l\_{\text{all}} + e^{m(x^{(2)}) - m\_{\max}^{\text{new}}} l(x^{(2)})$ 
 同时利用全局标量来更新分块1与分块2的softmax结果, softmax的分块计算动态更新, 数学上和全局统一计算的结果是一致的
 + 公式15(更新分块2): $softmax^{new}(x^{(2)})=\frac{softmax(x^{(2)}).l(x^{(2)}).e^{m(x^{(2)})-m_{max}^{new}}}{l_{\text{all}}^{\text{new}}}$
