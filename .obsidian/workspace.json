@@ -114,7 +114,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#attention",
+                "query": "tag:",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -150,7 +150,8 @@
               "title": "Flash Attention & Paged Attention 的大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -270,7 +271,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8540327d9d107686",
+  "active": "57074d7edbcb980c",
   "lastOpenFiles": [
     "Pasted image 20260129202806.png",
     "0. foundations/常见模型结构.md",

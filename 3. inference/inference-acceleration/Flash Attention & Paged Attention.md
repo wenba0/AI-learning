@@ -1,9 +1,10 @@
+#flash_attention
 操作的性能瓶颈有两种：
 + compute-bound：计算密集型
 + memory-bound：存储访问密集型
 之前的大部分对于attention的改进聚焦于FLOPS（计算量），比如group attention等，flash attention聚焦于后者
 ##### GPU硬件层级
-分为SRAM（存储空间小，带宽大）、HBM（显存）、DRAM
+#硬件 分为SRAM（存储空间小，带宽大）、HBM（显存）、DRAM
 GPU的计算流程：将数据从显存（HBM）加载至on-chip的SRAM中，然后由SM（Streaming Multiprocessors，流式多处理器）读取并进行计算。计算结果再通过SRAM返回给显存。
 ![[Pasted image 20260129101416.png|750]]
 ##### softmax与safe softmax
