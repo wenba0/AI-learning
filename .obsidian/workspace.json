@@ -68,7 +68,7 @@
             }
           },
           {
-            "id": "8540327d9d107686",
+            "id": "a70aba2eed2ec040",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -151,7 +151,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -271,34 +271,34 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8540327d9d107686",
+  "active": "a70aba2eed2ec040",
   "lastOpenFiles": [
-    "Pasted image 20260129202806.png",
+    "Pasted image 20260130161848.png",
+    "Pasted image 20260130161610.png",
     "0. foundations/常见模型结构.md",
+    "3. inference/inference-acceleration/并行策略.md",
+    "3. inference/inference-engine/vllm.md",
+    "3. inference/量化/qwen2.5-VL量化.md",
+    "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
+    "Pasted image 20260129202806.png",
     "0. foundations/数值精度.md",
     "0. foundations/comm op.md",
     "3. inference/inference-acceleration/常见推理特性.md",
-    "3. inference/inference-acceleration/并行策略.md",
-    "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
     "Pasted image 20260129155722.png",
     "Pasted image 20260129144144.png",
     "Pasted image 20260129143709.png",
     "Pasted image 20260129142914.png",
     "Pasted image 20260129101416.png",
     "images/20260121161604.png",
-    "3. inference/量化/qwen2.5-VL量化.md",
     "3. inference/inference-acceleration/image.png",
     "3. inference/inference-acceleration/image-1.png",
-    "Pasted image 20260127164205.png",
     "0. foundations/linux命令.md",
-    "images/20260122174009.png",
     "3. inference/基础特性",
     "1. models/LLM/11.md",
     "1. models/LLM/Qwen.md",
     "0. foundations/并行策略",
     "qwen3-moe-arch.png.md",
     "images",
-    "3. inference/inference-engine/vllm.md",
     "0. foundations/算子&模块",
     "3. inference/量化",
     "5. paper-reading/11.md",
