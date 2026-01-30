@@ -6,7 +6,7 @@
 ##### GPU硬件层级
 #硬件 分为SRAM（存储空间小，带宽大）、HBM（显存）、DRAM
 GPU的计算流程：将数据从显存（HBM）加载至on-chip的SRAM中，然后由SM（Streaming Multiprocessors，流式多处理器）读取并进行计算。计算结果再通过SRAM返回给显存。
-![[Pasted image 20260129101416.png|750]]
+![Megatron-LM tp|1125](../../images/20260129101416.png)
 ##### softmax与safe softmax
 标准softmax
 对于输入向量 $\mathbf{z} = [z_1, z_2, \dots, z_n]$，其 Softmax 输出为：
@@ -53,9 +53,10 @@ $$
 + 公式16(更新分块1): $softmax^{new}(x^{(1)})=\frac{softmax(x^{(1)}).l(x^{(1)}).e^{m(x^{(1)})-m_{max}^{new}}}{l_{\text{all}}^{\text{new}}}$
 ##### flash attention计算流程
 标准attention计算过程如下，需要在HBM和SRAM之间搬来搬去，内存读写bound严重影响模型性能
-![[Pasted image 20260129143709.png|1125]]
+![Megatron-LM tp|1125](../../images/20260129143709.png)
 flash attention利用分块计算的思路,将矩阵Q K V O分成很多小块逐步搬到SRAM中进行计算,减少了HBM的读写
-![[Pasted image 20260129144144.png|1150]]
+
+![Megatron-LM tp|1125](../../images/20260129144144.png)
 1. 依据特征维度d和SRAM大小选择合适的切分大小
 2. 初始化O(0填充, attention最终的输出结果), l m (softmax分块动态计算过程中需要记录的每块数据的局部最大值与指数和)
 3. 行切分Q, K, V(K计算的时候会被转置)
@@ -70,14 +71,15 @@ flash attention利用分块计算的思路,将矩阵Q K V O分成很多小块逐
 12. 这块公式太复杂了==  反正记住softmax可以动态更新的, 那O也是可以动态更新的; softmax是针对O的行去做的,同一行中每新拿到一块结果,就会更新当前所有的值,直到最后一次更新就和全量计算的结果一样了,假设只有两块, 拿到$O_{01}$的临时结果后,会更新全局最大值与和,然后同时更新$O_{00}$和$O_{01}$, 更多分块的情况同理,这块的公式推到可具体参考 [图解大模型计算加速系列：FlashAttention V1，从硬件到计算逻辑 - 知乎](https://zhuanlan.zhihu.com/p/669926191)
 13. 每一轮外循环对应N轮内循环, 对应O矩阵中的一列数据块(下图中的$O_{00}$ $O_{10}$ $O_{20}$), 第二次外循环 动态更新第一列和第二列 ^-^
 
-![[Pasted image 20260129202806.png|975]]
+![Megatron-LM tp|1125](../../images/20260129202806.png)
 #attention 计算公式: $Attention(Q,K,V)=Softmax(\frac{QK^T}{\sqrt{d_k}})V$
 O分块计算的结果写入HBM中,并且会动态更新的,对于一行来说,每次新计算一个分块, 都会更新这一行目前所有的分块结果
 
 **一句话总结: 将原有的大矩阵完整计算搬进搬出HBM, 替换为分块计算, 大幅减少了HBM的读写,缓解了memory-bound问题, 可能会增加部分计算量(动态更新的部分),但是整体的计算效率提升了**
-![[Pasted image 20260130161848.png]]
+![Megatron-LM tp|1125](../../images/20260130161848.png)
 ### flash attention v2
 一些零散的优化点: 每次动态更新除指数和改为 最终统一除指数和
+
 假设我们要计算从1到10的平均值，但每次只能算两个数。那么原来的FlashAttention v1的计算方法类似于：
 第一次算出前两个数的平均值，并记录下当前已经计算过的数字数量N：(1+2)/2 = 1.5，N=2。
 第二次算出前三个数的平均值，需要使用之前的N（N=2）来更新：  (1.5x2+3)/3 = 2，N =3
