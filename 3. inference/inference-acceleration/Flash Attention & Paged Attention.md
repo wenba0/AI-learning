@@ -70,7 +70,7 @@ flash attention利用分块计算的思路,将矩阵Q K V O分成很多小块逐
 13. 每一轮外循环对应N轮内循环, 对应O矩阵中的一列数据块(下图中的$O_{00}$ $O_{10}$ $O_{20}$), 第二次外循环 动态更新第一列和第二列 ^-^
 
 ![[Pasted image 20260129202806.png|975]]
-attention计算: $Attention(Q,K,V)=Softmax(\frac{QK^T}{\sqrt{d_k}})V$
+#attention 计算公式: $Attention(Q,K,V)=Softmax(\frac{QK^T}{\sqrt{d_k}})V$
 O分块计算的结果写入HBM中,不需要再修改了,
 
 算子代码实现
