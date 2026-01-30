@@ -68,7 +68,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -127,13 +127,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "3. inference/inference-acceleration/并行策略.md",
+                "file": "0. foundations/comm op.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "并行策略 的大纲"
+              "title": "comm op 的大纲"
             }
           }
         ]
@@ -256,10 +256,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "39c977e9ba4a1f7d",
+  "active": "386ddf95bfb3b84a",
   "lastOpenFiles": [
-    "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
     "3. inference/inference-acceleration/并行策略.md",
+    "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
     "images/20260129143709.png",
     "Pasted image 20260127164205.png",
     "images/20260130161848.png",
