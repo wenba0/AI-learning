@@ -68,7 +68,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -127,13 +127,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
+                "file": "3. inference/inference-acceleration/并行策略.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Flash Attention & Paged Attention 的大纲"
+              "title": "并行策略 的大纲"
             }
           }
         ]
@@ -256,11 +256,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9fb903c106db65ea",
+  "active": "39c977e9ba4a1f7d",
   "lastOpenFiles": [
+    "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
     "3. inference/inference-acceleration/并行策略.md",
     "images/20260129143709.png",
-    "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
     "Pasted image 20260127164205.png",
     "images/20260130161848.png",
     "Pasted image 20260130161610.png",
