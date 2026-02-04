@@ -61,7 +61,7 @@
               "state": {
                 "file": "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
               "title": "Flash Attention & Paged Attention"
@@ -73,16 +73,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3. inference/inference-acceleration/kvcache相关.md",
+                "file": "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "kvcache相关"
+              "title": "Flash Attention & Paged Attention"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "vertical"
@@ -141,13 +140,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "3. inference/inference-acceleration/kvcache相关.md",
+                "file": "0. foundations/常见模型结构.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "kvcache相关 的大纲"
+              "title": "常见模型结构 的大纲"
             }
           }
         ]
@@ -270,13 +269,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9cf7faa1d0fc5ac7",
+  "active": "82b85ef570233fb7",
   "lastOpenFiles": [
-    "Pasted image 20260204154029.png",
     "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
-    "3. inference/inference-acceleration/kvcache相关.md",
-    "3. inference/inference-acceleration/并行策略.md",
     "0. foundations/常见模型结构.md",
+    "3. inference/inference-acceleration/kvcache相关.md",
+    "images/20260204160953.png",
+    "Pasted image 20260204154029.png",
+    "3. inference/inference-acceleration/并行策略.md",
     "1.md",
     "Pasted image 20260130161610.png",
     "Pasted image 20260129155722.png",
@@ -291,8 +291,6 @@
     "0. foundations/数值精度.md",
     "3. inference/inference-acceleration/常见推理特性.md",
     "images/20260129144144.png",
-    "images/20260129101416.png",
-    "images/20260121161604.png",
     "0. foundations/linux命令.md",
     "3. inference/基础特性",
     "1. models/LLM/11.md",
