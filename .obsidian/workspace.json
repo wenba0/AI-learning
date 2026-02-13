@@ -101,12 +101,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
-                "mode": "source",
-                "source": false
+                "file": "0. foundations/MHA MQA GQA MLA DSA.md",
+                "mode": "preview",
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "Flash Attention & Paged Attention"
+              "title": "MHA MQA GQA MLA DSA"
             }
           }
         ],
@@ -142,7 +142,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:",
+                "query": "mha",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -300,15 +300,19 @@
   },
   "active": "6224c3a08493d8d4",
   "lastOpenFiles": [
-    "0. foundations/linux命令.md",
-    "3. inference/量化/qwen2.5-VL量化.md",
-    "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
+    "Pasted image 20260213110717.png",
+    "Pasted image 20260213110438.png",
     "0. foundations/常见模型结构.md",
-    "Pasted image 20260204163653.png",
+    "0. foundations/MHA MQA GQA MLA DSA.md",
+    "3. inference/量化/qwen2.5-VL量化.md",
+    "3. inference/inference-acceleration/并行策略.md",
+    "3. inference/inference-acceleration/常见推理特性.md",
+    "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
     "3. inference/inference-acceleration/kvcache相关.md",
+    "0. foundations/linux命令.md",
+    "Pasted image 20260204163653.png",
     "images/20260204160953.png",
     "Pasted image 20260204154029.png",
-    "3. inference/inference-acceleration/并行策略.md",
     "1.md",
     "Pasted image 20260130161610.png",
     "Pasted image 20260129155722.png",
@@ -318,9 +322,7 @@
     "images/20260127164205.png",
     "images/20260130161848.png",
     "3. inference/inference-engine/vllm.md",
-    "images/20260129202806.png",
     "0. foundations/数值精度.md",
-    "3. inference/inference-acceleration/常见推理特性.md",
     "3. inference/基础特性",
     "1. models/LLM/11.md",
     "1. models/LLM/Qwen.md",
