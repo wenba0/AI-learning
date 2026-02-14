@@ -31,7 +31,7 @@
               "type": "markdown",
               "state": {
                 "file": "3. inference/inference-acceleration/并行策略.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": true
               },
               "pinned": true,
@@ -59,12 +59,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
+                "file": "0. foundations/MHA MQA GQA MLA DSA.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "Flash Attention & Paged Attention"
+              "title": "MHA MQA GQA MLA DSA"
             }
           },
           {
@@ -96,20 +96,6 @@
             }
           },
           {
-            "id": "6224c3a08493d8d4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "0. foundations/MHA MQA GQA MLA DSA.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "MHA MQA GQA MLA DSA"
-            }
-          },
-          {
             "id": "26ffef3dd7e35b9f",
             "type": "leaf",
             "state": {
@@ -132,9 +118,23 @@
               "icon": "lucide-image",
               "title": "20260214105739"
             }
+          },
+          {
+            "id": "5a6f1fea7ba4fbe5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "0. foundations/MHA MQA GQA MLA DSA.md",
+                "mode": "source",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "MHA MQA GQA MLA DSA"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 8
       }
     ],
     "direction": "vertical"
@@ -322,23 +322,23 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "39c977e9ba4a1f7d",
+  "active": "5a6f1fea7ba4fbe5",
   "lastOpenFiles": [
-    "images/20260214105739.png",
     "3. inference/inference-acceleration/并行策略.md",
+    "0. foundations/MHA MQA GQA MLA DSA.md",
+    "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
     "images/20260214104610.png",
+    "images/20260204163653.png",
+    "0. foundations/常见模型结构.md",
+    "images/20260214105739.png",
     "images/20260214105127.png",
     "images/20260214104825.png",
-    "0. foundations/MHA MQA GQA MLA DSA.md",
-    "Pasted image 20260213110717.png",
-    "Pasted image 20260213110438.png",
-    "0. foundations/常见模型结构.md",
+    "images/20260213110717.png",
+    "images/20260213110438.png",
     "3. inference/量化/qwen2.5-VL量化.md",
     "3. inference/inference-acceleration/常见推理特性.md",
-    "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
     "3. inference/inference-acceleration/kvcache相关.md",
     "0. foundations/linux命令.md",
-    "Pasted image 20260204163653.png",
     "images/20260204160953.png",
     "Pasted image 20260204154029.png",
     "1.md",
