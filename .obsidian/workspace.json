@@ -31,7 +31,7 @@
               "type": "markdown",
               "state": {
                 "file": "3. inference/inference-acceleration/并行策略.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": true
               },
               "pinned": true,
@@ -142,7 +142,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "mha",
+                "query": "tag:",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -178,7 +178,8 @@
               "title": "qwen2.5-VL量化 的大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -300,6 +301,10 @@
   },
   "active": "39c977e9ba4a1f7d",
   "lastOpenFiles": [
+    "Pasted image 20260214105739.png",
+    "Pasted image 20260214105127.png",
+    "Pasted image 20260214104825.png",
+    "Pasted image 20260214104610.png",
     "0. foundations/MHA MQA GQA MLA DSA.md",
     "Pasted image 20260213110717.png",
     "Pasted image 20260213110438.png",
@@ -317,9 +322,6 @@
     "Pasted image 20260130161610.png",
     "Pasted image 20260129155722.png",
     "0. foundations/comm op.md",
-    "Pasted image 20260129142914.png",
-    "images/20260129143709.png",
-    "images/20260127164205.png",
     "3. inference/inference-engine/vllm.md",
     "0. foundations/数值精度.md",
     "3. inference/基础特性",
