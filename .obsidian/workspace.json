@@ -31,7 +31,7 @@
               "type": "markdown",
               "state": {
                 "file": "3. inference/inference-acceleration/并行策略.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": true
               },
               "pinned": true,
@@ -108,6 +108,30 @@
               "icon": "lucide-file",
               "title": "MHA MQA GQA MLA DSA"
             }
+          },
+          {
+            "id": "26ffef3dd7e35b9f",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "images/20260214104610.png"
+              },
+              "icon": "lucide-image",
+              "title": "20260214104610"
+            }
+          },
+          {
+            "id": "9a4bbf2a95890116",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "images/20260214105739.png"
+              },
+              "icon": "lucide-image",
+              "title": "20260214105739"
+            }
           }
         ],
         "currentTab": 1
@@ -178,8 +202,7 @@
               "title": "qwen2.5-VL量化 的大纲"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -301,16 +324,16 @@
   },
   "active": "39c977e9ba4a1f7d",
   "lastOpenFiles": [
-    "Pasted image 20260214105739.png",
-    "Pasted image 20260214105127.png",
-    "Pasted image 20260214104825.png",
-    "Pasted image 20260214104610.png",
+    "images/20260214105739.png",
+    "3. inference/inference-acceleration/并行策略.md",
+    "images/20260214104610.png",
+    "images/20260214105127.png",
+    "images/20260214104825.png",
     "0. foundations/MHA MQA GQA MLA DSA.md",
     "Pasted image 20260213110717.png",
     "Pasted image 20260213110438.png",
     "0. foundations/常见模型结构.md",
     "3. inference/量化/qwen2.5-VL量化.md",
-    "3. inference/inference-acceleration/并行策略.md",
     "3. inference/inference-acceleration/常见推理特性.md",
     "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
     "3. inference/inference-acceleration/kvcache相关.md",
@@ -320,7 +343,6 @@
     "Pasted image 20260204154029.png",
     "1.md",
     "Pasted image 20260130161610.png",
-    "Pasted image 20260129155722.png",
     "0. foundations/comm op.md",
     "3. inference/inference-engine/vllm.md",
     "0. foundations/数值精度.md",
