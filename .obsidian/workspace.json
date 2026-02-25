@@ -126,7 +126,7 @@
               "type": "markdown",
               "state": {
                 "file": "3. inference/inference-acceleration/并行策略.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
@@ -322,7 +322,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a556114277cb11f9",
+  "active": "5a6f1fea7ba4fbe5",
   "lastOpenFiles": [
     "0. foundations/MHA MQA GQA MLA DSA.md",
     "3. inference/inference-acceleration/并行策略.md",
