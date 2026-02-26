@@ -125,12 +125,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "0. foundations/各种attention.md",
-                "mode": "preview",
+                "file": "0. foundations/常见模型结构.md",
+                "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "各种attention"
+              "title": "常见模型结构"
             }
           }
         ],
@@ -326,10 +326,10 @@
   "lastOpenFiles": [
     "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
     "3. inference/inference-acceleration/并行策略.md",
+    "0. foundations/常见模型结构.md",
     "0. foundations/各种attention.md",
     "images/20260214104610.png",
     "images/20260204163653.png",
-    "0. foundations/常见模型结构.md",
     "images/20260214105739.png",
     "images/20260214105127.png",
     "images/20260214104825.png",
