@@ -125,12 +125,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
-                "mode": "preview",
+                "file": "6. others/效率工具.md",
+                "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "Flash Attention & Paged Attention"
+              "title": "效率工具"
             }
           }
         ],
@@ -322,13 +322,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "5a6f1fea7ba4fbe5",
+  "active": "a556114277cb11f9",
   "lastOpenFiles": [
+    "6. others",
+    "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
+    "6. others/效率工具.md",
     "0. foundations/各种attention.md",
     "3. inference/量化/qwen2.5-VL量化.md",
     "0. foundations/comm op.md",
     "0. foundations/常见模型结构.md",
-    "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
     "3. inference/inference-acceleration/并行策略.md",
     "images/20260214104610.png",
     "images/20260204163653.png",
