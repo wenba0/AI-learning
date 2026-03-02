@@ -125,12 +125,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "6. others/效率工具.md",
+                "file": "3. inference/基础特性/常见推理特性.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "效率工具"
+              "title": "常见推理特性"
             }
           }
         ],
@@ -322,11 +322,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a556114277cb11f9",
+  "active": "5a6f1fea7ba4fbe5",
   "lastOpenFiles": [
+    "6. others/效率工具.md",
     "6. others",
     "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
-    "6. others/效率工具.md",
     "0. foundations/各种attention.md",
     "3. inference/量化/qwen2.5-VL量化.md",
     "0. foundations/comm op.md",
@@ -339,7 +339,7 @@
     "images/20260214104825.png",
     "images/20260213110717.png",
     "images/20260213110438.png",
-    "3. inference/inference-acceleration/常见推理特性.md",
+    "3. inference/基础特性/常见推理特性.md",
     "3. inference/inference-acceleration/kvcache相关.md",
     "0. foundations/linux命令.md",
     "images/20260204160953.png",
