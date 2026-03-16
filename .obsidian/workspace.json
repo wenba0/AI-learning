@@ -120,9 +120,21 @@
               "icon": "lucide-file",
               "title": "常见模型结构"
             }
+          },
+          {
+            "id": "4c9d7a53e760910e",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.12.4"
+              },
+              "icon": "lucide-book-up",
+              "title": "版本说明 1.12.4"
+            }
           }
         ],
-        "currentTab": 7
+        "currentTab": 8
       }
     ],
     "direction": "vertical"
@@ -310,7 +322,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9a4bbf2a95890116",
+  "active": "4c9d7a53e760910e",
   "lastOpenFiles": [
     "0. foundations/各种attention.md",
     "3. inference/inference-engine/vllm.md",
