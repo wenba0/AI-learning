@@ -20,3 +20,30 @@ deepseek v2中提出的，引入了latent特征表示，减少了kvcache的显�
 针对问题3，将Q的输入也改为了低秩投影形式（潜向量），这与减少KV Cache无关。个人认为主要是为了特征的对齐，如果只对键 k 和值 v 进行潜在向量计算，而忽略查询 q，会导致 q 和 k、v 的特征空间不一致，影响注意力机制的效果。在注意力机制中，q、k、v是平等的输入，对它们进行相同的潜在向量计算可以保持模型的对称性和一致性。
 ### DSA
 deepseek sparse attention，会与kv进行筛选，只选择部分attention进行计算，GLM-5也用到了该方法
+
+
+
+
+
+
+
+
+
+
+
+
+curl [http://192.168.13.157:8066/v1/chat/completions](http://192.0.0.1:8080/v1/chat/completions) -H "Content-Type: application/json" -d '{"model": "qwen35","messages": [
+
+{"role": "system", "content": "You are a helpful assistant."},
+
+{"role": "user", "content": [
+
+{"type": "text", "text": "What is the impact of changing block size on memory fragmentation and prefix cache hits when running large models with vLLM on Ascend NPUs in production setup?"}
+
+]}
+
+],
+
+"max_tokens":10
+
+}'
