@@ -127,12 +127,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "0. foundations/linux命令.md",
+                "file": "0. foundations/常见模型结构.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "linux命令"
+              "title": "常见模型结构"
             }
           }
         ],
@@ -326,9 +326,9 @@
   },
   "active": "4c9d7a53e760910e",
   "lastOpenFiles": [
+    "0. foundations/linux命令.md",
     "0. foundations/各种attention.md",
     "0. foundations/常见模型结构.md",
-    "0. foundations/linux命令.md",
     "0. foundations/数值精度.md",
     "0. foundations/comm op.md",
     "6. others/效率工具.md",
