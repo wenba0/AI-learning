@@ -47,3 +47,5 @@ curl [http://192.168.13.157:8066/v1/chat/completions](http://192.0.0.1:8080/v1/c
 "max_tokens":10
 
 }'
+
+### GDN  Linear Attention
