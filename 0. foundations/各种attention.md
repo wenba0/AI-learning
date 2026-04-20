@@ -22,7 +22,7 @@ deepseek v2中提出的，引入了latent特征表示，减少了kvcache的显�
 MLA中KVcache会把压缩的latent kv和k的位置编码都存下来，两者的维度分别是kv_lora_rank 512 和qk_rope_head_dim 64，混存中间的latent kv相较于直接缓存原始的KV（MLA中latent kv经过两个上投影矩阵分别得到K和V，K与rope cat到一块，拿到QKV之后按照原始的方式计算attention）会节省很多空间
 [DeepSeek MLA KV Cache占用计算 - 知乎](https://zhuanlan.zhihu.com/p/1939360765736887971)
 
-且MLA的latent KV是所有head共享的，不受TP的切分影响；正常的MHA经过TP切分后每张卡上之后保留1/tp_size的KVCache
+且MLA的latent KV是所有head共享的，不受TP的切分影响，DSA同理；正常的MHA经过TP切分后每张卡上之后保留1/tp_size的KVCache
 ### DSA
 deepseek sparse attention，会与kv进行筛选，只选择部分attention进行计算，GLM-5也用到了该方法
 
