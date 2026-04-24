@@ -141,12 +141,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "0. foundations/各种attention.md",
+                "file": "0. foundations/常见模型结构.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "各种attention"
+              "title": "常见模型结构"
             }
           }
         ],
@@ -340,8 +340,10 @@
   },
   "active": "c4b42857c0c51fc8",
   "lastOpenFiles": [
-    "0. foundations/常见模型结构.md",
+    "Pasted image 20260424161425.png",
+    "Pasted image 20260424161239.png",
     "0. foundations/各种attention.md",
+    "0. foundations/常见模型结构.md",
     "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
     "3. inference/inference-acceleration/flash decoding.md",
     "3. inference/inference-acceleration/并行策略.md",
@@ -367,7 +369,6 @@
     "images/20260204160953.png",
     "Pasted image 20260204154029.png",
     "1.md",
-    "Pasted image 20260130161610.png",
     "3. inference/基础特性",
     "0. foundations/并行策略",
     "qwen3-moe-arch.png.md",
