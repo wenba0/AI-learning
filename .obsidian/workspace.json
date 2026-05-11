@@ -155,13 +155,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "0. foundations/常见模型结构.md",
+                "file": "0. foundations/linux命令.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "常见模型结构 的大纲"
+              "title": "linux命令 的大纲"
             }
           },
           {
@@ -170,12 +170,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "0. foundations/常见模型结构.md",
+                "file": "0. foundations/linux命令.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "常见模型结构"
+              "title": "linux命令"
             }
           }
         ],
@@ -354,8 +354,8 @@
   },
   "active": "f524055d7a26a243",
   "lastOpenFiles": [
-    "0. foundations/各种attention.md",
     "0. foundations/常见模型结构.md",
+    "0. foundations/各种attention.md",
     "Pasted image 20260424164411.png",
     "Pasted image 20260424164205.png",
     "Pasted image 20260424163800.png",
