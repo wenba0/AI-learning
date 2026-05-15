@@ -1,4 +1,5 @@
 #kvcache
+### KVCache背景与attention计算
 ==问题1：==为什么只保存KV 不缓存Q呢，每次新的一轮推理只用到新生成的Q、新生成的KV以及老的KV
 从推理角度
 prefill阶段：对于输入的n个token，输出结果为$n*d$ ,只选择最后一个维度的特征$1*d$用于生成一个新的token
@@ -11,5 +12,5 @@ decode阶段：计算新生成的token，计算其QKV，结合之前所有的KV�
 
 另外记住 attention是有mask的，每个$Q_n$只能和之前所有的KV值进行计算，这个地方是有mask的，对应下图中QK相乘结果的矩阵，也意味着每个token只能看到之前的所有token
 再注意 QKV的映射矩阵不是同一个，有的直接初始化的三个linear 有的是一个linear，但是输出维度是$embed_{dim} * 3$，输出后再拆分成三份 
-![Megatron-LM tp|925](../../images/20260204160953.png)
+![Megatron-LM tp|1160](../../images/20260204160953.png)
 
