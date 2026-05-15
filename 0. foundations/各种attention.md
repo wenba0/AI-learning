@@ -25,32 +25,12 @@ MLA中KVcache会把压缩的latent kv和k的位置编码都存下来，两者的
 且MLA的latent KV是所有head共享的，不受TP的切分影响，DSA同理；正常的MHA经过TP切分后每张卡上之后保留1/tp_size的KVCache
 ### DSA
 deepseek sparse attention，会与kv进行筛选，只选择部分attention进行计算，GLM-5也用到了该方法
+引入了lighting indexer 
 
 
 
 
 
 
-
-
-
-
-
-
-curl [http://192.168.13.157:8066/v1/chat/completions](http://192.0.0.1:8080/v1/chat/completions) -H "Content-Type: application/json" -d '{"model": "qwen35","messages": [
-
-{"role": "system", "content": "You are a helpful assistant."},
-
-{"role": "user", "content": [
-
-{"type": "text", "text": "What is the impact of changing block size on memory fragmentation and prefix cache hits when running large models with vLLM on Ascend NPUs in production setup?"}
-
-]}
-
-],
-
-"max_tokens":10
-
-}'
 
 ### GDN  Linear Attention
