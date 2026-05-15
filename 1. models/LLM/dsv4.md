@@ -14,9 +14,102 @@ mHC学术做法是，通过Sinkhorn-Knopp算法让任意矩阵变成双随机矩
 
 原理介绍
 ```
-对于hc, pre输入映射，将多流加权变成一个送给Layer（attn或mlp）,post将Layer的输出变成多流，然后与
+对于hc, pre输入映射，将多流加权变成一个送给Layer（attn或mlp）,post将Layer的输出变成多流，然后与残差进行求和
 Pre:  layer_input = Σ_i （α_i · residual_i）     ← α_i 是 per-stream scalar gate
 Post: residual_new_j = β_j · x + residual_j    ← β_j 也是 scalar gate
+问题：流之间不互通！
+
+mhc: comb_mix是个双随机矩阵，
+Pre:  仍产出 post_mix, comb_mix, layer_input
+Post:  residual_new_j = post_mix_j · x  +  Σ_i comb_mix_ij · residual_i
+                       ↑ Post Mapping       ↑ Res Mapping (新！)
 ```
+
 **vllm的实现**
-首层输入的hidden_states会复制config.hc_mult份，
+首层输入的hidden_states会复制config.hc_mult份，然后分别在attn和mlp前面执行pre，后面执行post,其中res_mapping的操作已经融合到了post中，对于cuda场景将post与pre通过mhc_fused_post_pre融合到了一起，amd的rocm场景pre和post是分开的，vllm中这几个算子都是tilelang的
+```python
+	def _forward_cuda(
+        self,
+        x: torch.Tensor,
+        positions: torch.Tensor,
+        input_ids: torch.Tensor | None,
+        post_mix: torch.Tensor | None = None,
+        res_mix: torch.Tensor | None = None,
+        residual: torch.Tensor | None = None,
+    ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+        if residual is None:
+            # Run standalone hc_pre on first layer
+            residual = x
+            x, post_mix, res_mix = self.hc_pre(
+                x, self.hc_attn_fn, self.hc_attn_scale, self.hc_attn_base
+            )
+        else:
+            residual, post_mix, res_mix, x = self.mhc_fused_post_pre(
+                x,
+                residual,
+                post_mix,
+                res_mix,
+                self.hc_attn_fn,
+                self.hc_attn_scale,
+                self.hc_attn_base,
+                self.rms_norm_eps,
+                self.hc_eps,
+                self.hc_eps,
+                self.hc_post_alpha,
+                self.hc_sinkhorn_iters,
+            )
+        x = self.attn_norm(x)
+        x = self.attn(positions, x, None)
+        residual, post_mix, res_mix, x = self.mhc_fused_post_pre(
+            x,
+            residual,
+            post_mix,
+            res_mix,
+            self.hc_ffn_fn,
+            self.hc_ffn_scale,
+            self.hc_ffn_base,
+            self.rms_norm_eps,
+            self.hc_eps,
+            self.hc_eps,
+            self.hc_post_alpha,
+            self.hc_sinkhorn_iters,
+        )
+        x = self.ffn_norm(x)
+        x = self.ffn(x, input_ids)
+        return x, residual, post_mix, res_mix
+
+    def _forward_rocm(
+        self,
+        x: torch.Tensor,
+        positions: torch.Tensor,
+        input_ids: torch.Tensor | None,
+        post_mix: torch.Tensor | None,
+        res_mix: torch.Tensor | None,
+        residual: torch.Tensor | None,
+    ) -> torch.Tensor:
+        residual = x
+        x, post, comb = self.hc_pre(
+            x, self.hc_attn_fn, self.hc_attn_scale, self.hc_attn_base
+        )
+        x = self.attn_norm(x)
+        x = self.attn(positions, x, None)
+        x = self.hc_post(x, residual, post, comb)
+        residual = x
+        x, post, comb = self.hc_pre(
+            x, self.hc_ffn_fn, self.hc_ffn_scale, self.hc_ffn_base
+        )
+        x = self.ffn_norm(x)
+        x = self.ffn(x, input_ids)
+        x = self.hc_post(x, residual, post, comb)
+        return x, None, None, None
+```
+
+CUDA vs ROCm 路径差异
+
+| 特性           | CUDA (forward_cuda)                                                                                                                                                                                                                                                                                                                         | ROCm (forward_rocm)      |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
+| Pre 实现       | TileLang JIT kernel                                                                                                                                                                                                                                                                                                                         | AITER / PyTorch fallback |
+| Post 实现      | TileLang                                                                                                                                                                                                                                                                                                                                    | AITER / PyTorch          |
+| FusedPostPre | ✅ 有（fused kernel）                                                                                                                                                                                                                                                                                                                           | ❌ 无（分解为 Post + Pre 两步）   |
+| 流管理          | 3 个 aux CUDA stream 并行 GEMM                                                                                                                                                                                                                                                                                                                 | 无 aux stream（避免 hang）    |
+| 首层特殊处理       | [residual=None](vscode-file://vscode-app/d:/software/vscode/Microsoft%20VS%20Code/8b640eef5a/resources/app/out/vs/code/electron-browser/workbench/workbench.html) 时先跑 standalone [hc_pre](vscode-file://vscode-app/d:/software/vscode/Microsoft%20VS%20Code/8b640eef5a/resources/app/out/vs/code/electron-browser/workbench/workbench.html) | 同左                       |
