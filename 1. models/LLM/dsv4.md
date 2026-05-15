@@ -12,5 +12,11 @@ mHC学术做法是，通过Sinkhorn-Knopp算法让任意矩阵变成双随机矩
 	什么是双随机矩阵？每一行的和均为1、每一列的和均为1，所有元素均为非负  
 	什么是Sinkhorn-Knopp算法？先对矩阵取指数保证非负，交替对行和列做归一化，重复20次，该矩阵就近似收敛为双随机矩阵
 
+原理介绍
+```
+对于hc, pre输入映射，将多流加权变成一个送给Layer（attn或mlp）,post将Layer的输出变成多流，然后与
+Pre:  layer_input = Σ_i （α_i · residual_i）     ← α_i 是 per-stream scalar gate
+Post: residual_new_j = β_j · x + residual_j    ← β_j 也是 scalar gate
+```
 **vllm的实现**
 首层输入的hidden_states会复制config.hc_mult份，
