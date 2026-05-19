@@ -198,12 +198,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3. inference/inference-engine/sglang.md",
+                "file": "3. inference/inference-acceleration/并行策略.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "sglang"
+              "title": "并行策略"
             }
           }
         ],
@@ -266,13 +266,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "3. inference/inference-engine/sglang.md",
+                "file": "3. inference/inference-acceleration/并行策略.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "sglang 的大纲"
+              "title": "并行策略 的大纲"
             }
           }
         ]
@@ -382,13 +382,14 @@
   },
   "active": "21861f463507578d",
   "lastOpenFiles": [
+    "3. inference/inference-engine/sglang.md",
+    "Pasted image 20260519194014.png",
     "Pasted image 20260519193812.png",
     "Pasted image 20260519193709.png",
     "Pasted image 20260519193602.png",
     "Pasted image 20260519193346.png",
     "Pasted image 20260519193216.png",
     "3. inference/inference-engine/vllm.md",
-    "3. inference/inference-engine/sglang.md",
     "Pasted image 20260519192705.png",
     "Pasted image 20260519192433.png",
     "Pasted image 20260519192217.png",
@@ -408,8 +409,6 @@
     "3. inference/inference-acceleration/kvcache相关.md",
     "3. inference/inference-acceleration/flash decoding.md",
     "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
-    "Pasted image 20260519143349.png",
-    "Pasted image 20260519143036.png",
     "1. models/MultiModal/11.md",
     "1. models/Diffusion/11.md",
     "6. others/效率工具.md",
