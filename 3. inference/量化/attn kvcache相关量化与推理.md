@@ -1,8 +1,11 @@
 ### 场景1：full attention的量化
-主要分为对attn中qkv linear的量化和KVCache的量化
+主要分为对attn中qkv linear的量化、KVCache的量化、fa3量化（现在不怎么用了 精度有问题）
 第一部分就是正常的linear quant，第二部分为c8量化
-##### attention quant
-
+##### qkv linear quant
+quant的linear输出结果为bf16，输入量化到int8与int的权重相乘后反量化回bf16再输出
+![[Pasted image 20260519142920.png|563]]
+量化后的MatMul权重重新增加了`input_scale`、`input_offset`、`quant_bias`和`deq_scale`。其中`input_scale`和`input_offset`用于对激活值进行量化。MatMul使用量化后的激活值和量化权重进行计算。`quant_bias`和`deq_scale`用于对MatMul的计算结果进行反量化。
+![[Pasted image 20260519143036.png]]
 ##### KVCache quant
 modelslim资料（量化逻辑与量化配置）[KVCache Quant-MindStudio26.0.0-昇腾社区](https://www.hiascend.com/document/detail/zh/mindstudio/2600/msTT_msIT/msModelSlim/docs/zh/quantization_algorithms/quantization_algorithms/kvcache_quant.md)
 MindIE资料（量化输出件与量化推理流程）[KV Cache int8-MindIE3.0.0-昇腾社区](https://www.hiascend.com/document/detail/zh/mindie/300/mindiellm/llmdev/user_guide/feature/kv_cache_int8.md)
@@ -55,3 +58,7 @@ class AscendC8AttentionBackendImpl(AscendAttentionBackendImpl):
 ```
 fia算子文档：[torch_npu.npu_fused_infer_attention_score-Ascend Extension for PyTorch6.0.RC3-昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/60RC3/apiref/apilist/ptaoplist_000768.html)
 算子功能：适配增量&全量推理场景的FlashAttention算子，既可以支持全量计算场景（PromptFlashAttention），也可支持增量计算场景（IncreFlashAttention）。当Query矩阵的S为1，进入IncreFlashAttention分支，其余场景进入PromptFlashAttention分支。（同时支持prefill和decode，内部做判断）
+##### fa3 量化
+这个资料里似乎缺少了对qkv的量化参数（fa_q fa_k fa_v）[Attention量化-MindIE3.0.0-昇腾社区](https://www.hiascend.com/document/detail/zh/mindie/300/mindiellm/llmdev/user_guide/feature/attention_quantization.md)
+这个资料中有的 [msmodelslim/docs/FA量化使用说明.md · Ascend/msit - Gitee.com](https://gitee.com/ascend/msit/blob/master/msmodelslim/docs/FA%E9%87%8F%E5%8C%96%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
+![[Pasted image 20260519143349.png|989]]
