@@ -266,13 +266,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "3. inference/量化/qwen2.5-VL量化.md",
+                "file": "3. inference/量化/attn kvcache相关量化与推理.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "qwen2.5-VL量化 的大纲"
+              "title": "attn kvcache相关量化与推理 的大纲"
             }
           }
         ]
