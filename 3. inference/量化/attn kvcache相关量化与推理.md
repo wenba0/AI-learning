@@ -62,4 +62,5 @@ fia算子文档：[torch_npu.npu_fused_infer_attention_score-Ascend Extension fo
 这个资料里似乎缺少了对qkv的量化参数（fa_q fa_k fa_v）[Attention量化-MindIE3.0.0-昇腾社区](https://www.hiascend.com/document/detail/zh/mindie/300/mindiellm/llmdev/user_guide/feature/attention_quantization.md)
 这个资料中有的 [msmodelslim/docs/FA量化使用说明.md · Ascend/msit - Gitee.com](https://gitee.com/ascend/msit/blob/master/msmodelslim/docs/FA%E9%87%8F%E5%8C%96%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
 ![[Pasted image 20260519143349.png|989]]
-需要attn算子支持，attn linear量化是包含在内的，KVCache的量化
+需要attn算子支持，attn linear量化是包含在内的，KVCache的量化也是包含在里面的，fa3可以回退那可能保存的kv还是浮点的，因为要全局统一
+
