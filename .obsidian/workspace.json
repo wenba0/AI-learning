@@ -382,13 +382,16 @@
   },
   "active": "21861f463507578d",
   "lastOpenFiles": [
-    "3. inference/量化/attn kvcache相关量化与推理.md",
-    "3. inference/量化/不同数据格式的量化与推理.md",
+    "Pasted image 20260521201726.png",
+    "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
+    "3. inference/inference-acceleration/并行策略.md",
     "0. foundations/数值精度、数据格式.md",
     "0. foundations/啊ALLINONE.md",
+    "0. foundations/常见模型结构.md",
+    "3. inference/量化/不同数据格式的量化与推理.md",
+    "3. inference/量化/attn kvcache相关量化与推理.md",
     "3. inference/量化/qwen2.5-VL量化.md",
     "0. foundations/各种attention.md",
-    "3. inference/inference-acceleration/并行策略.md",
     "3. inference/inference-engine/sglang.md",
     "Pasted image 20260519194014.png",
     "Pasted image 20260519193812.png",
@@ -401,7 +404,6 @@
     "Pasted image 20260519192433.png",
     "Pasted image 20260519192217.png",
     "Pasted image 20260519192103.png",
-    "0. foundations/常见模型结构.md",
     "0. foundations/通信算子.md",
     "0. foundations/linux命令.md",
     "1. models/LLM/dsv4.md",
@@ -409,7 +411,6 @@
     "3. inference/基础特性/常见推理特性.md",
     "3. inference/inference-acceleration/kvcache相关.md",
     "3. inference/inference-acceleration/flash decoding.md",
-    "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
     "1. models/MultiModal/11.md",
     "1. models/Diffusion/11.md",
     "6. others/效率工具.md",
@@ -423,7 +424,6 @@
     "images",
     "0. foundations/算子&模块",
     "3. inference/量化",
-    "5. paper-reading/11.md",
     "0. foundations/工具"
   ]
 }
