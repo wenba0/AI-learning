@@ -198,12 +198,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "0. foundations/1ALLINONE.md",
+                "file": "6. others/效率工具.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1ALLINONE"
+              "title": "效率工具"
             }
           }
         ],
@@ -266,13 +266,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "0. foundations/1ALLINONE.md",
+                "file": "6. others/效率工具.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "1ALLINONE 的大纲"
+              "title": "效率工具 的大纲"
             }
           }
         ]
@@ -382,6 +382,8 @@
   },
   "active": "21861f463507578d",
   "lastOpenFiles": [
+    "0. foundations/1ALLINONE.md",
+    "未命名.md",
     "0. foundations/常见模型结构.md",
     "assets/Pasted image 20260204154029.png",
     "3. inference/量化/不同数据格式的量化与推理.md",
@@ -395,7 +397,6 @@
     "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
     "3. inference/基础特性/常见推理特性.md",
     "assets/20260115152209.png",
-    "0. foundations/1ALLINONE.md",
     "1. models/LLM/Qwen3.5.md",
     "assets/Pasted image 20260424161239.png",
     "3. inference/量化/qwen2.5-VL量化.md",
