@@ -6,7 +6,7 @@
 ##### GPU硬件层级
 #硬件 分为SRAM（存储空间小，带宽大）、HBM（显存）、DRAM
 GPU的计算流程：将数据从显存（HBM）加载至on-chip的SRAM中，然后由SM（Streaming Multiprocessors，流式多处理器）读取并进行计算。计算结果再通过SRAM返回给显存。
-![Megatron-LM tp|1125](assets/20260129101416.png)
+![Megatron-LM tp](assets/20260129101416.png)
 ##### softmax与safe softmax
 标准softmax
 对于输入向量 $\mathbf{z} = [z_1, z_2, \dots, z_n]$，其 Softmax 输出为：
