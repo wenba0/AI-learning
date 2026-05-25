@@ -394,7 +394,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "cdf4dad7be9ff32e",
+  "active": "a556114277cb11f9",
   "lastOpenFiles": [
     "3. inference/量化/不同数据格式的量化与推理.md",
     "1. models/LLM/Qwen3.5.md",
@@ -434,7 +434,7 @@
     "3. inference/基础特性",
     "0. foundations/并行策略",
     "qwen3-moe-arch.png.md",
-    "images",
+    "assets",
     "0. foundations/算子&模块",
     "3. inference/量化",
     "0. foundations/工具"
