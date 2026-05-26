@@ -198,12 +198,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "6. others/效率工具.md",
+                "file": "1. models/LLM/dsv4.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "效率工具"
+              "title": "dsv4"
             }
           }
         ],
@@ -266,13 +266,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "6. others/效率工具.md",
+                "file": "1. models/LLM/dsv4.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "效率工具 的大纲"
+              "title": "dsv4 的大纲"
             }
           }
         ]
@@ -382,9 +382,10 @@
   },
   "active": "21861f463507578d",
   "lastOpenFiles": [
+    "0. foundations/常见模型结构.md",
+    "6. others/效率工具.md",
     "0. foundations/1ALLINONE.md",
     "未命名.md",
-    "0. foundations/常见模型结构.md",
     "assets/Pasted image 20260204154029.png",
     "3. inference/量化/不同数据格式的量化与推理.md",
     "1.md",
@@ -414,7 +415,6 @@
     "1. models/LLM/dsv4.md",
     "1. models/MultiModal/11.md",
     "1. models/Diffusion/11.md",
-    "6. others/效率工具.md",
     "1. models/LLM/11.md",
     "1. models/未命名.md",
     "6. others",
