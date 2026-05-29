@@ -397,6 +397,7 @@
   "active": "39ec88dce661ac04",
   "lastOpenFiles": [
     "1. models/LLM/assets/file-20260529160443987.png",
+    "1. models/LLM/dsv4.md",
     "1. models/LLM/assets/file-20260529160307670.png",
     "1. models/LLM/assets",
     "assets/dsv4/file-20260529155556587.png",
@@ -404,7 +405,6 @@
     "assets/dsv4/file-20260529155533503.png",
     "assets/dsv4",
     "1. models/Diffusion/11.md",
-    "1. models/LLM/dsv4.md",
     "3. inference/inference-engine/sglang/一些材料.md",
     "assets/一些材料/file-20260529155447302.png",
     "assets/一些材料",
@@ -416,7 +416,6 @@
     "3. inference/inference-engine/vllm/assets/1.调度策略与KVCache管理",
     "3. inference/inference-engine/vllm/assets",
     "assets/Pasted image 20260529154931.png",
-    "assets/Pasted_image__20260529-1.png",
     "assets/Pasted.md",
     "3. inference/inference-engine/vllm/2. vLLM v1 的整体架构和核心数据流.md",
     "3. inference/inference-engine/vllm/一些材料.md",
