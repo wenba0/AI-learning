@@ -45,12 +45,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "1.md",
+                "file": "6. others/obsidian设置.md",
                 "mode": "source",
-                "source": true
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "1"
+              "title": "obsidian设置"
             }
           },
           {
@@ -205,21 +205,9 @@
               "icon": "lucide-file",
               "title": "一些材料"
             }
-          },
-          {
-            "id": "39ec88dce661ac04",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "6. others/assets/file-20260529160735702.png"
-              },
-              "icon": "lucide-image",
-              "title": "file-20260529160735702"
-            }
           }
         ],
-        "currentTab": 14
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -278,20 +266,20 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "6. others/assets/file-20260529160735702.png",
+                "file": "6. others/obsidian设置.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "file-20260529160735702 的大纲"
+              "title": "obsidian设置 的大纲"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 333.5
+    "width": 331.5
   },
   "right": {
     "id": "ef2b98278598a1ba",
@@ -392,27 +380,29 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "39ec88dce661ac04",
+  "active": "386ddf95bfb3b84a",
   "lastOpenFiles": [
+    "assets/file-20260529161307311.png",
+    "assets/file-20260529161251745.png",
+    "assets/file-20260529161233614.png",
+    "6. others/效率工具.md",
+    "assets/file-20260529161139699.png",
+    "6. others/assets/file-20260529160735702.png",
     "6. others/assets/file-20260529160658251.png",
     "6. others/assets/file-20260529160647672.png",
     "1. models/LLM/assets/file-20260529160307670.png",
     "6. others/obsidian设置.md",
-    "6. others/assets/file-20260529160735702.png",
     "6. others/assets",
     "1. models/LLM/dsv4.md",
     "1. models/LLM/assets/file-20260529160443987.png",
     "1. models/LLM/assets",
     "assets/dsv4/file-20260529155556587.png",
     "assets/dsv4/file-20260529155540869.png",
-    "assets/dsv4/file-20260529155533503.png",
     "assets/dsv4",
     "1. models/Diffusion/11.md",
     "3. inference/inference-engine/sglang/一些材料.md",
-    "assets/一些材料/file-20260529155447302.png",
     "assets/一些材料",
     "3. inference/inference-engine/vllm/1.调度策略与KVCache管理.md",
-    "assets/1.调度策略与KVCache管理/file-20260529155432818.png",
     "assets/1.调度策略与KVCache管理",
     "3. inference/inference-engine/vllm/assets/1.调度策略与KVCache管理",
     "3. inference/inference-engine/vllm/assets",
@@ -426,7 +416,6 @@
     "3. inference/inference-engine/vllm",
     "0. foundations/1ALLINONE.md",
     "0. foundations/常见模型结构.md",
-    "6. others/效率工具.md",
     "3. inference/量化/不同数据格式的量化与推理.md",
     "1.md",
     "3. inference/量化/attn kvcache相关量化与推理.md",
