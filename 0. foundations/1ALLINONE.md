@@ -12,7 +12,7 @@ tolearn
 
 + 如何解决重编译带来的整网性能波动？
 	1 部分参数是不必要的，可以去掉tl.constexpr 
-	2 ascendC算子替换
+	2 ascendC算子替换（为什么ascendc不会有重编译：Triton 是 JIT （just in time）即时编译，AscendC 是 AOT(ahead of time) 离线编译、上线只有调用没有编译）
 	3 可以在dummy_run中单独对某个triton算子写不同size的预热；
 	实际业务场景中通过措施1、2和dummy_run默认的预热过程已经解决该问题了
 
