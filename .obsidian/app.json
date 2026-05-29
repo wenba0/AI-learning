@@ -6,5 +6,6 @@
   "alwaysUpdateLinks": true,
   "promptDelete": false,
   "useMarkdownLinks": true,
-  "attachmentFolderPath": "assets"
+  "attachmentFolderPath": "assets",
+  "newLinkFormat": "relative"
 }

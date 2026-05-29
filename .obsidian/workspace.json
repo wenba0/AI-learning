@@ -396,6 +396,9 @@
   },
   "active": "39ec88dce661ac04",
   "lastOpenFiles": [
+    "1. models/LLM/assets/file-20260529160443987.png",
+    "1. models/LLM/assets/file-20260529160307670.png",
+    "1. models/LLM/assets",
     "assets/dsv4/file-20260529155556587.png",
     "assets/dsv4/file-20260529155540869.png",
     "assets/dsv4/file-20260529155533503.png",
@@ -414,8 +417,6 @@
     "3. inference/inference-engine/vllm/assets",
     "assets/Pasted image 20260529154931.png",
     "assets/Pasted_image__20260529-1.png",
-    "assets/Pasted_image__20260529.png",
-    "assets/Pasted_image_1.调度策略与KVCache管理_20260529-1.png",
     "assets/Pasted.md",
     "3. inference/inference-engine/vllm/2. vLLM v1 的整体架构和核心数据流.md",
     "3. inference/inference-engine/vllm/一些材料.md",
@@ -440,7 +441,6 @@
     "3. inference/inference-acceleration/kvcache相关.md",
     "0. foundations/数值精度、数据格式.md",
     "6. others",
-    "3. inference/基础特性",
-    "0. foundations/并行策略"
+    "3. inference/基础特性"
   ]
 }
