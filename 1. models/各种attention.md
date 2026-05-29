@@ -2,19 +2,19 @@
 [Attention进阶史（MHA, MQA, GQA, MLA） – 图神经网络公社](https://gnn.club/?p=2729)
 ### 原始attention
 softmax对行做
-每个O的输出需要当前的Q和历史所有的KV，详见[[kvcache相关#KVCache背景与attention计算]]，也可参考[[并行策略#CP]]
+每个O的输出需要当前的Q和历史所有的KV，详见[[../3. inference/inference-acceleration/kvcache相关#KVCache背景与attention计算]]，也可参考[[../3. inference/inference-acceleration/并行策略#CP]]
 
 ### MHA
 MHA $n*d$的hidden_states将其按头数进行切分，头数h，每个头输入为$n*\frac{d}{h}$,每个头分别计算attention之后concat起来变成$n*d$的输出结果
 ### MQA
 MQA 所有的头共用一个kv，只对Q按头进行切分，KV经过映射矩阵之后就是head_dim的 代码如下 （transformers中num_key_value_heads=1就是MQA 要是=num_attention_heads 那就是MHA）
-![Megatron-LM sp|1125](20260204163653.png)
+![Megatron-LM sp|1125](../assets/20260204163653.png)
 ### GQA
 GQA是MHA和MQA之间的平衡，一组head共享一个kv，要是所有的头分成g个group，linear输出维度是$g* \frac{d}{h}$，即num_key_value_heads * head_dims
 ### MLA
-![Megatron-LM sp|1125](20260213110438.png)
+![Megatron-LM sp|1125](../assets/20260213110438.png)
 deepseek v2中提出的，引入了latent特征表示，减少了kvcache的显存占用
-![Megatron-LM sp|1125](20260213110717.png)
+![Megatron-LM sp|1125](../assets/20260213110717.png)
 - 相较与MHA而已，MLA是再MHA之前多了一些qkv的处理，这看上去是多了一些计算，为什么会变的更高效？
 - 位置编码信息RoPE为什么不直接加在$k_{t,i}^{C}$上，而要新创建一些$k_{t}^{R}$？
 - 为什么对于查询向量q，也要进行潜向量的计算？
