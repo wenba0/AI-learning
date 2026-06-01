@@ -17,6 +17,19 @@ tolearn
 	实际业务场景中通过措施1、2和dummy_run默认的预热过程已经解决该问题了
 
 **kvcache打满 dp同步 fused_mc2精度问题:**
-问题发现：xx
+[[Feature]Add xmask feature for dispatch_ffn_combine operator (only for w8a8 branch) by guanguan0308 · Pull Request #8560 · vllm-project/vllm-ascend](https://github.com/vllm-project/vllm-ascend/pull/8560)
+
+问题描述：
+1. KV cache 打满后，vLLM V1 会触发 preemption/recompute。
+2. 某个 DP rank 上的请求被抢占后恢复，需要重新 prefill 较长上下文。
+3. 其他 DP rank 可能仍然只是 decode，真实 token 数很少。
+4. 在混部 / full graph / FULL_DECODE_ONLY 这类图模式下，不同 DP rank 为了 shape 对齐，会 pad 到同一个较大的 token 数。
+5. 于是某些 rank 上出现大量 **padding token**。
+6. 这些 padding token 进入了 fused MoE 路径。
+7. 修复前的fused_mc2 路径没有 x active mask，padding token 没有被明确标记为无效 token。padding token 也参与 MoE routing。
+8. 这些padding token会集中路由到少数专家，超过 fused_mc2 max_output_size=65536，dispatch/combine 截断或数据错位，最终输出乱码 / 空回复 / 精度劣化
+问题解决：
+为padding token增加mask，增加一个新的padding expert，原本的专家是0-255，padding expert的ID是256，算子内部做判断如果是padding token的话将其放到padding expert上，不参与真实专家的dispatch-ffn-combine过程，
+**根因**
 问题描述：vLLM中没有类似sglang的双池方案，对于linear attention的cache，也是用kvblock来存放，没有连续，会造成空间浪费
 问题解决：通过连续性算子支持
