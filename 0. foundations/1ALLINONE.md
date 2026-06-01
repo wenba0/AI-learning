@@ -27,9 +27,11 @@ tolearn
 5. 于是某些 rank 上出现大量 **padding token**。
 6. 这些 padding token 进入了 fused MoE 路径。
 7. 修复前的fused_mc2 路径没有 x active mask，padding token 没有被明确标记为无效 token。padding token 也参与 MoE routing。
-8. 这些padding token会集中路由到少数专家，超过 fused_mc2 max_output_size=65536，dispatch/combine 截断或数据错位，最终输出乱码 / 空回复 / 精度劣化
+8. 这些padding token会集中路由到少数专家，超过算子的最大处理长度，可能会把真实的token截掉，导致精度问题
 问题解决：
 为padding token增加mask，增加一个新的padding expert，原本的专家是0-255，padding expert的ID是256，算子内部做判断如果是padding token的话将其放到padding expert上，不参与真实专家的dispatch-ffn-combine过程，
-**根因**
-问题描述：vLLM中没有类似sglang的双池方案，对于linear attention的cache，也是用kvblock来存放，没有连续，会造成空间浪费
-问题解决：通过连续性算子支持
+
++ 为什么padding token会集中打到专家0-9？
+因为选择的是topk=10，每个padding token都是0，那通过gating后每个专家的得分都是一样的，会按照默认的顺序选择0-9的专家
++ 为什么需要padding expert，直接丢掉padding token不可以吗？
++ 
