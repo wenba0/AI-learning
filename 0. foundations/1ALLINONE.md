@@ -16,7 +16,7 @@ tolearn
 	3 可以在dummy_run中单独对某个triton算子写不同size的预热；
 	实际业务场景中通过措施1、2和dummy_run默认的预热过程已经解决该问题了
 
-kvcache打满 dp同步 fused_mc2精度问题：**
+**kvcache打满 dp同步 fused_mc2精度问题:**
 问题发现：xx
 问题描述：vLLM中没有类似sglang的双池方案，对于linear attention的cache，也是用kvblock来存放，没有连续，会造成空间浪费
 问题解决：通过连续性算子支持
