@@ -382,6 +382,9 @@
   },
   "active": "386ddf95bfb3b84a",
   "lastOpenFiles": [
+    "assets/file-20260602171640585.png",
+    "assets/file-20260602171550079.png",
+    "assets/file-20260602171451904.png",
     "0. foundations/1ALLINONE.md",
     "0. foundations/效率提升.md",
     "0. foundations/数值精度、数据格式.md",
@@ -411,8 +414,6 @@
     "assets/file-20260529161139699.png",
     "6. others/assets/file-20260529160735702.png",
     "6. others/assets/file-20260529160658251.png",
-    "6. others/assets/file-20260529160647672.png",
-    "1. models/LLM/assets/file-20260529160307670.png",
     "6. others/assets",
     "1. models/LLM/assets",
     "assets/dsv4",
@@ -426,7 +427,6 @@
     "3. inference/inference-engine/sglang",
     "3. inference/inference-engine/未命名.md",
     "3. inference/inference-engine/vllm",
-    "1.md",
     "6. others"
   ]
 }
