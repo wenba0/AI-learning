@@ -55,6 +55,7 @@ $$
 标准attention计算过程如下，需要在HBM和SRAM之间搬来搬去，内存读写bound严重影响模型性能
 ![Megatron-LM tp|1125](20260129143709.png)
 flash attention利用分块计算的思路,将矩阵Q K V O分成很多小块逐步搬到SRAM中进行计算,减少了HBM的读写
+我当前块正在算的时候下一个分块就可以开始搬了，会快很多
 
 ![Megatron-LM tp|1125](20260129144144.png)
 1. 依据特征维度d和SRAM大小选择合适的切分大小
