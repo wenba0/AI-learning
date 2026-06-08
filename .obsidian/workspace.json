@@ -226,12 +226,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "0. foundations/效率提升.md",
+                "file": "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "效率提升"
+              "title": "Flash Attention & Paged Attention"
             }
           }
         ],
@@ -294,13 +294,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "0. foundations/效率提升.md",
+                "file": "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "效率提升 的大纲"
+              "title": "Flash Attention & Paged Attention 的大纲"
             }
           }
         ]
@@ -410,6 +410,7 @@
   },
   "active": "3916a586d7946433",
   "lastOpenFiles": [
+    "0. foundations/效率提升.md",
     "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
     "3. inference/inference-acceleration/并行策略.md",
     "1. models/常见模型结构.md",
@@ -418,7 +419,6 @@
     "0. foundations/1ALLINONE.md",
     "1. models/各种attention.md",
     "0. foundations/数值精度、数据格式.md",
-    "0. foundations/效率提升.md",
     "assets/file-20260602174323247.png",
     "assets/file-20260602172917529.png",
     "assets/file-20260602172841496.png",
