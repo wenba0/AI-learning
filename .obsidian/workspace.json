@@ -226,12 +226,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "0. foundations/效率提升.md",
+                "file": "0. foundations/1ALLINONE.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "效率提升"
+              "title": "1ALLINONE"
             }
           }
         ],
@@ -410,6 +410,8 @@
   },
   "active": "3916a586d7946433",
   "lastOpenFiles": [
+    "0. foundations/效率提升.md",
+    "0. foundations/通信算子.md",
     "0. foundations/1ALLINONE.md",
     "3. inference/inference-acceleration/并行策略.md",
     "4. hardware&op/11.md",
@@ -419,7 +421,6 @@
     "3. inference/量化/attn kvcache相关量化与推理.md",
     "3. inference/inference-engine/vllm/2.调度策略与KVCache管理.md",
     "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
-    "0. foundations/效率提升.md",
     "1. models/常见模型结构.md",
     "3. inference/inference-acceleration/kvcache相关.md",
     "1. models/各种attention.md",
@@ -433,7 +434,6 @@
     "assets/file-20260602171640585.png",
     "assets/file-20260602171550079.png",
     "assets/file-20260602171451904.png",
-    "0. foundations/通信算子.md",
     "0. foundations/linux命令.md",
     "3. inference/量化/不同数据格式的量化与推理.md",
     "3. inference/量化/dsv4量化.md",
