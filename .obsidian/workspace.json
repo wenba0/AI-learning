@@ -226,12 +226,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3. inference/inference-acceleration/负载均衡.md",
+                "file": "3. inference/inference-engine/vllm/2.调度策略与KVCache管理.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "负载均衡"
+              "title": "2.调度策略与KVCache管理"
             }
           }
         ],
@@ -410,15 +410,16 @@
   },
   "active": "3916a586d7946433",
   "lastOpenFiles": [
-    "0. foundations/1ALLINONE.md",
+    "3. inference/inference-engine/vllm/1. vLLM v1 的整体架构和核心数据流.md",
     "3. inference/inference-acceleration/负载均衡.md",
+    "3. inference/inference-engine/nano-vllm",
+    "0. foundations/1ALLINONE.md",
     "1. models/常见模型结构.md",
     "0. foundations/效率提升.md",
     "0. foundations/通信算子.md",
     "3. inference/inference-acceleration/并行策略.md",
     "4. hardware&op/11.md",
     "4. hardware&op/未命名.md",
-    "3. inference/inference-engine/vllm/1. vLLM v1 的整体架构和核心数据流.md",
     "3. inference/量化/量化算法.md",
     "3. inference/量化/attn kvcache相关量化与推理.md",
     "3. inference/inference-engine/vllm/2.调度策略与KVCache管理.md",
@@ -445,7 +446,6 @@
     "1. models/LLM/Qwen3.5.md",
     "assets/file-20260529162051136.png",
     "3. inference/inference-engine/sglang/一些材料.md",
-    "6. others/obsidian设置.md",
     "6. others/assets",
     "1. models/LLM/assets",
     "assets/dsv4",
@@ -454,7 +454,6 @@
     "3. inference/inference-engine/vllm/assets/1.调度策略与KVCache管理",
     "3. inference/inference-engine/vllm/assets",
     "3. inference/inference-engine/sglang",
-    "3. inference/inference-engine/vllm",
-    "6. others"
+    "3. inference/inference-engine/vllm"
   ]
 }
