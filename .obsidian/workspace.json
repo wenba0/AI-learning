@@ -410,6 +410,7 @@
   },
   "active": "3916a586d7946433",
   "lastOpenFiles": [
+    "assets/file-20260627173742070.png",
     "assets/file-20260627170627918.png",
     "3. inference/inference-engine/vllm/2.调度策略与KVCache管理.md",
     "3. inference/inference-engine/nano-vllm/nano-vllm.md",
@@ -446,7 +447,6 @@
     "3. inference/inference-engine/vllm/3.特性.md",
     "3. inference/inference-engine/vllm/0.大纲.md",
     "1. models/LLM/Qwen3.5.md",
-    "assets/file-20260529162051136.png",
     "6. others/assets",
     "1. models/LLM/assets",
     "assets/dsv4",
