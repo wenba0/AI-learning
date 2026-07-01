@@ -240,12 +240,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3. inference/基础特性/常见推理特性.md",
+                "file": "0. foundations/1ALLINONE.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "常见推理特性"
+              "title": "1ALLINONE"
             }
           }
         ],
@@ -424,6 +424,7 @@
   },
   "active": "68a80086895ccae9",
   "lastOpenFiles": [
+    "3. inference/基础特性/常见推理特性.md",
     "1. models/常见模型结构.md",
     "3. inference/inference-engine/nano-vllm/nano-vllm.md",
     "assets/file-20260627173742070.png",
