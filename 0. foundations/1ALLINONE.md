@@ -3,6 +3,7 @@ tolearn
 + window attn 的原理 以及KVCache管理策略、
 + tp sp场景下的 MLA （MLA head只有1）
 + tp dp ep sp 并行策略如何选择
++ 算子的FLOPS和bandwidth计算
 + lora 推理
 + 通算掩盖  多流的具体实现方式
 + mlapo算子
