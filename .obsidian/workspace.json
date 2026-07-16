@@ -240,12 +240,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3. inference/inference-engine/vllm/attention量化相关.md",
+                "file": "3. inference/inference-engine/nano-vllm/nano-vllm.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "attention量化相关"
+              "title": "nano-vllm"
             }
           }
         ],
@@ -422,10 +422,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "68a80086895ccae9",
+  "active": "a556114277cb11f9",
   "lastOpenFiles": [
-    "3. inference/量化/attn kvcache相关量化与推理.md",
     "3. inference/inference-engine/vllm/attention量化相关.md",
+    "3. inference/量化/attn kvcache相关量化与推理.md",
     "3. inference/量化/量化算法.md",
     "0. foundations/1ALLINONE.md",
     "1. models/各种attention.md",
