@@ -438,6 +438,7 @@
   },
   "active": "9aab50f7e4ac4241",
   "lastOpenFiles": [
+    "assets/file-20260720115201844.png",
     "assets/file-20260720112202763.png",
     "1. models/各种attention.md",
     "3. inference/inference-engine/vllm/attention量化相关.md",
@@ -471,7 +472,6 @@
     "assets/file-20260602172740445.png",
     "assets/file-20260602172517671.png",
     "assets/file-20260602172350552.png",
-    "assets/file-20260602171640585.png",
     "0. foundations/linux命令.md",
     "3. inference/量化/不同数据格式的量化与推理.md",
     "3. inference/量化/dsv4量化.md",
