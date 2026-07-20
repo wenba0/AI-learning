@@ -8,7 +8,6 @@ Q1：modelslim导出的是什么？
 Q2：为什么FIA的prefill和decode实现逻辑不一样？
 
 #### MLA：FAKQuant / FA quant
-
-
+mla计算逻辑见：[attention量化相关](attention量化相关.md)
 
 
