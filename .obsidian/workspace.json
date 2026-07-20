@@ -254,12 +254,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3. inference/inference-engine/vllm/attention量化相关.md",
+                "file": "0. foundations/1ALLINONE.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "attention量化相关"
+              "title": "1ALLINONE"
             }
           }
         ],
@@ -438,10 +438,10 @@
   },
   "active": "9aab50f7e4ac4241",
   "lastOpenFiles": [
+    "3. inference/inference-engine/vllm/attention量化相关.md",
     "assets/file-20260720115201844.png",
     "assets/file-20260720112202763.png",
     "1. models/各种attention.md",
-    "3. inference/inference-engine/vllm/attention量化相关.md",
     "3. inference/inference-acceleration/并行策略.md",
     "1. models/常见模型结构.md",
     "assets/file-20260720093512519.png",
@@ -471,7 +471,6 @@
     "assets/file-20260602172841496.png",
     "assets/file-20260602172740445.png",
     "assets/file-20260602172517671.png",
-    "assets/file-20260602172350552.png",
     "0. foundations/linux命令.md",
     "3. inference/量化/不同数据格式的量化与推理.md",
     "3. inference/量化/dsv4量化.md",
