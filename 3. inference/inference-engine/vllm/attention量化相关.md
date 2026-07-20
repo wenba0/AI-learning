@@ -10,4 +10,3 @@ Q2：为什么FIA的prefill和decode实现逻辑不一样？
 #### MLA：FAKQuant / FA quant
 mla计算逻辑见：[各种attention#MLA](../../../1.%20models/各种attention#MLA)
 
-
