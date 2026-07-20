@@ -28,7 +28,7 @@ MLA中KVcache会把压缩的latent kv和k的位置编码都存下来，两者的
 
 且MLA的latent KV是所有head共享的，不受TP的切分影响，DSA同理；正常的MHA经过TP切分后每张卡上之后保留1/tp_size的KVCache
 
-[超细图解MLA计算流&吸收矩阵对比分析 - 知乎](https://zhuanlan.zhihu.com/p/1948769945132470860)
+[超细图解MLA计算流&吸收矩阵对比分析 - 知乎](https://zhuanlan.zhihu.com/p/1948769945132470860)  从输入hidden states shape为(1,1,7168)开始看，很清晰
 ![](../../../assets/file-20260720093512519.png)
 
 
