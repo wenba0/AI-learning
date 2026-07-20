@@ -12,7 +12,7 @@ mla计算逻辑见：[各种attention#MLA](../../../1.%20models/各种attention#
 vllm-ascend实现逻辑如下，只对decode部分做了量化加速
 ![](../../../assets/file-20260720112202763.png)
 ##### 量化部分1：mla_preprocess_only_decode
-主要是预处理部分的一些量化，涉及到KVCache的写入
+主要是mlapo融合算子内部的一些量化，涉及到KVCache的写入
 ![1203](../../../assets/file-20260720115201844.png)
 ##### 量化部分2：mla_preprocess_decode
 
