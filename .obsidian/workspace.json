@@ -254,12 +254,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "4. hardware&op/利用率计算.md",
+                "file": "3. inference/inference-engine/vllm/attention量化相关.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "利用率计算"
+              "title": "attention量化相关"
             }
           }
         ],
@@ -438,8 +438,8 @@
   },
   "active": "9aab50f7e4ac4241",
   "lastOpenFiles": [
-    "4. hardware&op/未命名.md",
     "4. hardware&op/利用率计算.md",
+    "4. hardware&op/未命名.md",
     "3. inference/inference-engine/vllm/attention量化相关.md",
     "0. foundations/1ALLINONE.md",
     "assets/file-20260720115201844.png",
