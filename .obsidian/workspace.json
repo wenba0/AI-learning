@@ -322,16 +322,17 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "4. hardware&op/11.md",
+                "file": "3. inference/inference-engine/vllm/2.调度策略与KVCache管理.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "11 的大纲"
+              "title": "2.调度策略与KVCache管理 的大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -436,7 +437,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9aab50f7e4ac4241",
+  "active": "540c94eaf8306ccd",
   "lastOpenFiles": [
     "3. inference/inference-engine/vllm/3.模型推理.md",
     "3. inference/inference-engine/vllm/2.调度策略与KVCache管理.md",
