@@ -263,7 +263,7 @@
             }
           }
         ],
-        "currentTab": 12
+        "currentTab": 17
       }
     ],
     "direction": "vertical"
@@ -322,13 +322,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "1. models/各种attention.md",
+                "file": "3. inference/inference-engine/vllm/2.调度策略与KVCache管理.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "各种attention 的大纲"
+              "title": "2.调度策略与KVCache管理 的大纲"
             }
           }
         ],
@@ -437,13 +437,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "f524055d7a26a243",
+  "active": "9aab50f7e4ac4241",
   "lastOpenFiles": [
+    "1. models/各种attention.md",
     "3. inference/inference-engine/vllm/2.调度策略与KVCache管理.md",
     "3. inference/inference-engine/vllm/3.模型推理.md",
     "3. inference/inference-engine/vllm/4.特性.md",
     "3. inference/inference-engine/vllm/0.大纲.md",
-    "1. models/各种attention.md",
     "1. models/常见模型结构.md",
     "3. inference/基础特性/常见推理特性.md",
     "1. models/LLM/Qwen3.5.md",
