@@ -23,5 +23,37 @@ block_size=1024,num_kv_heads=2, head_size=256, dtype=torch.bfloat16, kv_quant_mo
 ```
 
 #### mamba的page_size如何确定
+通过gated_delta_net_state_shape函数计算shape, 然后通过`page_size = conv_state大小+ssm_state大小 = byteofdtype(conv_state_dtype)*conv_state_shape+byteofdtype(ssm_state_dtype)*ssm_state_shape`
+```python
+# 计算shape
+def gated_delta_net_state_shape(cls,tp_world_size: int,num_k_heads: int,num_v_heads: int,head_k_dim: int,head_v_dim: int,conv_kernel_size: int,num_spec: int = 0,):
+	conv_dim = head_k_dim * num_k_heads * 2 + head_v_dim * num_v_heads # 128 * 16 * 2 + 128 * 16 = 6144
+	conv_state_shape = cls._orient_conv_shape(
+		divide(conv_dim, tp_world_size),
+		conv_kernel_size - 1 + num_spec, # 没开TP，没开MTP，conv_kernel_size=4，因此conv_state_shape=(3, 6144)
+	)
+	temporal_state_shape = (
+		divide(num_v_heads, tp_world_size), # 16
+		head_v_dim,                         # 128
+		head_k_dim,                         # 128
+	)
+	return conv_state_shape, temporal_state_shape # (3, 6144), (16, 128, 128)
 
-#### 
+# 计算page_size
+class MambaSpec(KVCacheSpec):
+    ......
+    
+    @property
+    def page_size_bytes(self) -> int:
+        page_size = sum(
+            prod(shape) * get_dtype_size(dtype)
+            for (shape, dtype) in zip(self.shapes, self.dtypes)   # conv_state bf16, ssm_state fp32,因此page_size=3*6144*2+16*128*128*4=1085440 bytes
+        )
+        if self.page_size_padded is not None:
+            assert self.page_size_padded >= page_size
+            return self.page_size_padded
+        return page_size
+```
+
+
+#### 如何做full与mamba的对齐
