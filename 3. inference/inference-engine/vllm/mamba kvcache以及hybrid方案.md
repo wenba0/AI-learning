@@ -1,4 +1,6 @@
-
+整体的流程如下：
+1. 读取模型配置、参数配置，并做校验
+2. 根据配置分别计算full和mamba的page_size并做对齐pad
 
 当前SGLang有双池方案，且mamba block支持bf16，vLLM当前只有一种kvblock，要full attention和linear attention都要用，同时写入kv、conv_state、ssm_state，非连续----》连续，非连续对于conv_state和ssm_state没到block size时进行pad，会造成显存浪费，连续的方案就不会浪费了，需要fia等算子支持
 
@@ -22,15 +24,17 @@ block_size=1024,num_kv_heads=2, head_size=256, dtype=torch.bfloat16, kv_quant_mo
 				KVCacheGroupSpec(layer_names=['language_model.model.layers.2.linear_attn', 'language_model.model.layers.6.linear_attn'], kv_cache_spec=MambaSpec(block_size=133000, shapes=((3, 6144), (16, 128, 128)), dtypes=(torch.bfloat16, torch.float32), page_size_padded=2134016, mamba_type=<MambaAttentionBackendEnum.GDN_ATTN: 'vllm.v1.attention.backends.gdn_attn.GDNAttentionBackend'>, mamba_cache_mode='none', num_speculative_blocks=0), is_eagle_group=False)])
 ```
 
-#### mamba的page_size如何确定
+#### 各种attn spec的page_size如何确定
+==Mamba==
 通过gated_delta_net_state_shape函数计算shape, 然后通过`page_size = conv_state大小+ssm_state大小 = byteofdtype(conv_state_dtype)*conv_state_shape+byteofdtype(ssm_state_dtype)*ssm_state_shape`
+
 ```python
 # 计算shape
 def gated_delta_net_state_shape(cls,tp_world_size: int,num_k_heads: int,num_v_heads: int,head_k_dim: int,head_v_dim: int,conv_kernel_size: int,num_spec: int = 0,):
 	conv_dim = head_k_dim * num_k_heads * 2 + head_v_dim * num_v_heads # 128 * 16 * 2 + 128 * 16 = 6144
 	conv_state_shape = cls._orient_conv_shape(
-		divide(conv_dim, tp_world_size),
-		conv_kernel_size - 1 + num_spec, # 没开TP，没开MTP，conv_kernel_size=4，因此conv_state_shape=(3, 6144)
+		divide(conv_dim, tp_world_size), # 没开TP
+		conv_kernel_size - 1 + num_spec, # 没开MTP，conv_kernel_size=4，因此conv_state_shape=(3, 6144)
 	)
 	temporal_state_shape = (
 		divide(num_v_heads, tp_world_size), # 16
@@ -56,4 +60,5 @@ class MambaSpec(KVCacheSpec):
 ```
 
 
-#### 如何做full与mamba的对齐
+#### hybrid attn的page_size对齐
+all align none
