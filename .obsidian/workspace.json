@@ -438,6 +438,7 @@
   },
   "active": "9aab50f7e4ac4241",
   "lastOpenFiles": [
+    "assets/file-20260804102807844.png",
     "assets/file-20260803171902853.png",
     "3. inference/inference-engine/vllm/2.调度策略与KVCache管理.md",
     "3. inference/inference-engine/vllm/1. vLLM v1 的整体架构和核心数据流.md",
@@ -476,7 +477,6 @@
     "3. inference/inference-acceleration/负载均衡.md",
     "3. inference/inference-engine/nano-vllm",
     "3. inference/inference-acceleration/Flash Attention & Paged Attention.md",
-    "assets/file-20260602174323247.png",
     "6. others/assets",
     "1. models/LLM/assets",
     "assets/dsv4",
