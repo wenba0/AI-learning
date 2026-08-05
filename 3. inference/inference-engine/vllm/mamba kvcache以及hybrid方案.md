@@ -1,6 +1,6 @@
 整体的流程如下：
 1. 读取模型配置、参数配置，并做校验
-2. 根据配置分别计算full和mamba的page_size，通过`Platform._align_hybrid_block_size`对两者做对齐, 算出最终的page_size
+2. 在platform较严重，根据配置分别计算full和mamba的page_size，通过`Platform._align_hybrid_block_size`对两者做对齐(通过Executor调用`current_platform.update_block_size_for_backend(self.vllm_config)`), 算出最终的page_size
 3. 通过EngineCore初始化KVCache(`_initialize_kv_caches`方法)，包括计算KV可用显存、KVGroups分组、KVTensors划分
 4. 通过`self.model_executor.initialize_from_config(kv_cache_configs)`下发给Worker--->ModelRunner做真正的初始化：分配原始int8 buffer并reshape、通过`bind_kv_cache()`绑定到 forward context
 
