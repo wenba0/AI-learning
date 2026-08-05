@@ -6,13 +6,12 @@
 
 ~~当前SGLang有双池方案，且mamba block支持bf16，vLLM当前只有一种kvblock，要full attention和linear attention都要用，同时写入kv、conv_state、ssm_state，非连续----》连续，非连续对于conv_state和ssm_state没到block size时进行pad，会造成显存浪费，连续的方案就不会浪费了，需要fia等算子支持~~
 
-==这个整明白了可以梳理一下其他几类attn对应的spec与kv逻辑==
+#### hybrid attn 分页管理机制
 减层为8层，3层linear+full 两次
-**kvgroups如何分组的**：groups数量根据最小重复pattern的大小来的，共有4个group，因此`kv_cache_groups`中有4个`KVCacheGroupSpec`，每个group对应一种attn的spec，当前是`linear0, linear1, linear2, full_attn`循环两次，即4个group，要是模型中只有一种attn的话，就只有一个group
+**kvgroups如何分组的**：groups数量根据最小重复pattern的大小来的，共有4个group，因此`kv_cache_groups`中有4个`KVCacheGroupSpec`，每个group对应一种attn的spec，当前是`linear0, linear1, linear2, full_attn`循环两次，即4个group，要是模型中只有一种attn的话，就只有一个group，保证每个group内的attn语义是一样的，每个group会对应一个block_table
 **物理KVCacheTensor怎么切**：根据最小重复pattern的数量来的，`kv_cache_groups` 是逻辑分组；`kv_cache_tensors` 是 worker 真正分配显存的物理 tensor。将物理空间切分成group_size份，即2份，对于一个10层的llama，attn都是一样的，对应有1个group，物理Tensor切成10份，因为每一层的KVCache都不一样
-**具体是如何分配KV的**：
-1. 先计算出KVcache可用的空间大小：Total × utilization (如72GiB)-（权重+激活峰值+非torch）-cuda graph占用
-2. 根据模型信息确定
+
+EngineCore初始化kv后打印的KVCacheConfig如下：
 ```python
  KVCacheConfig(num_blocks=13227, 
  
