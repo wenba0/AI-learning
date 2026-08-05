@@ -60,7 +60,25 @@ class MambaSpec(KVCacheSpec):
         return page_size
 ```
 ==full attn==
-
+根据block_size算出对应的page_size，hybrid场景需要先算一个token对应的大小，再去做对齐+
+```python
+class FullAttentionSpec(AttentionSpec):
+	def real_page_size_bytes(self) -> int:
+        if self.kv_quant_mode.is_nvfp4:
+            # Packed layout per head: fp4 data + fp8 block scales.
+            # fp4 data: head_size//2 bytes (2 fp4 values per byte)
+            # fp8 block scale: head_size//16 bytes (1 scale per 16 elements)
+            last_dim = nvfp4_kv_cache_full_dim(
+                self.head_size
+            ) + nvfp4_kv_cache_full_dim(self.head_size_v)
+        elif self.kv_quant_mode == KVQuantMode.INT4_PER_TOKEN_HEAD:
+            last_dim = self.head_size // 2 + self.head_size_v // 2
+        else:
+            last_dim = self.head_size + self.head_size_v   # config.json中的head_dim是256   256+256=512
+        return (                                                                         
+            self.block_size * self.num_kv_heads * last_dim * get_dtype_size(self.dtype)  # attn_page_size_1_token即 1*2*512*2=2048
+        )
+```
 #### hybrid attn的page_size对齐
 两个地方：1 `Platform._align_hybrid_block_size`根据mamba来调整full的block_size   2 生成KV groups时如果还是不对齐的话通过`unify_kv_cache_spec_page_size()`对齐
 all align none
