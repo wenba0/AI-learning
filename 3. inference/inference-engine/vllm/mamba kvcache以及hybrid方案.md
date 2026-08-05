@@ -4,7 +4,7 @@
 3. 通过EngineCore初始化KVCache(`_initialize_kv_caches`方法)，包括计算KV可用显存、KVGroups分组、KVTensors划分
 4. 通过`self.model_executor.initialize_from_config(kv_cache_configs)`下发给Worker--->ModelRunner做真正的初始化：分配原始int8 buffer并reshape、通过`bind_kv_cache()`绑定到 forward context
 
-当前SGLang有双池方案，且mamba block支持bf16，vLLM当前只有一种kvblock，要full attention和linear attention都要用，同时写入kv、conv_state、ssm_state，非连续----》连续，非连续对于conv_state和ssm_state没到block size时进行pad，会造成显存浪费，连续的方案就不会浪费了，需要fia等算子支持
+~~当前SGLang有双池方案，且mamba block支持bf16，vLLM当前只有一种kvblock，要full attention和linear attention都要用，同时写入kv、conv_state、ssm_state，非连续----》连续，非连续对于conv_state和ssm_state没到block size时进行pad，会造成显存浪费，连续的方案就不会浪费了，需要fia等算子支持~~
 
 ==这个整明白了可以梳理一下其他几类attn对应的spec与kv逻辑==
 减层为8层，3层linear+full 两次
@@ -26,7 +26,7 @@ block_size=1024,num_kv_heads=2, head_size=256, dtype=torch.bfloat16, kv_quant_mo
 				KVCacheGroupSpec(layer_names=['language_model.model.layers.2.linear_attn', 'language_model.model.layers.6.linear_attn'], kv_cache_spec=MambaSpec(block_size=133000, shapes=((3, 6144), (16, 128, 128)), dtypes=(torch.bfloat16, torch.float32), page_size_padded=2134016, mamba_type=<MambaAttentionBackendEnum.GDN_ATTN: 'vllm.v1.attention.backends.gdn_attn.GDNAttentionBackend'>, mamba_cache_mode='none', num_speculative_blocks=0), is_eagle_group=False)])
 ```
 
-#### 各种attn spec的page_size如何确定
+#### 不同attn spec的page_size如何确定
 ==Mamba==
 通过gated_delta_net_state_shape函数计算shape, 然后通过`page_size = conv_state大小+ssm_state大小 = byteofdtype(conv_state_dtype)*conv_state_shape+byteofdtype(ssm_state_dtype)*ssm_state_shape`
 
@@ -61,7 +61,8 @@ class MambaSpec(KVCacheSpec):
         return page_size
 ```
 
-
 #### hybrid attn的page_size对齐
-两个地方：1 `Platform._align_hybrid_block_size`根据mamba来调整full的block_size   2 
+两个地方：1 `Platform._align_hybrid_block_size`根据mamba来调整full的block_size   2 生成KV groups时如果还是不对齐的话通过`unify_kv_cache_spec_page_size()`对齐
 all align none
+
+#### mamba如何做prefix cache
