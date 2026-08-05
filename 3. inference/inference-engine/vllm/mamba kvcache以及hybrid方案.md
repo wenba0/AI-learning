@@ -52,13 +52,14 @@ class MambaSpec(KVCacheSpec):
     def page_size_bytes(self) -> int:
         page_size = sum(
             prod(shape) * get_dtype_size(dtype)
-            for (shape, dtype) in zip(self.shapes, self.dtypes)   # conv_state bf16, ssm_state fp32,因此page_size=3*6144*2+16*128*128*4=1085440 bytes
+            for (shape, dtype) in zip(self.shapes, self.dtypes)   # conv_state bf16, ssm_state fp32,因此page_size=3*6144*2+16*128*128*4=1085440 bytes 
         )
         if self.page_size_padded is not None:
             assert self.page_size_padded >= page_size
             return self.page_size_padded
         return page_size
 ```
+==full attn==
 
 #### hybrid attn的page_size对齐
 两个地方：1 `Platform._align_hybrid_block_size`根据mamba来调整full的block_size   2 生成KV groups时如果还是不对齐的话通过`unify_kv_cache_spec_page_size()`对齐
