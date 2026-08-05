@@ -261,9 +261,21 @@
               "icon": "lucide-file",
               "title": "mamba kvcache以及hybrid方案"
             }
+          },
+          {
+            "id": "9c23e7dada35a7af",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.13.4"
+              },
+              "icon": "lucide-book-up",
+              "title": "版本说明 1.13.4"
+            }
           }
         ],
-        "currentTab": 17
+        "currentTab": 18
       }
     ],
     "direction": "vertical"
@@ -283,7 +295,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "文件列表"
@@ -436,7 +450,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9aab50f7e4ac4241",
+  "active": "9c23e7dada35a7af",
   "lastOpenFiles": [
     "3. inference/inference-engine/vllm/attention量化相关.md",
     "3. inference/inference-engine/vllm/0.大纲.md",
