@@ -266,12 +266,14 @@
             "id": "9c23e7dada35a7af",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.13.4"
+                "file": "3. inference/inference-engine/vllm/mamba kvcache以及hybrid方案.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-book-up",
-              "title": "版本说明 1.13.4"
+              "icon": "lucide-file",
+              "title": "mamba kvcache以及hybrid方案"
             }
           }
         ],
@@ -452,6 +454,7 @@
   },
   "active": "9c23e7dada35a7af",
   "lastOpenFiles": [
+    "3. inference/inference-engine/vllm/3.模型推理.md",
     "3. inference/inference-engine/vllm/attention量化相关.md",
     "3. inference/inference-engine/vllm/0.大纲.md",
     "3. inference/inference-engine/vllm/1. vLLM v1 的整体架构和核心数据流.md",
@@ -464,7 +467,6 @@
     "assets/file-20260803160337555.png",
     "assets/file-20260803155638739.png",
     "assets/file-20260803154010865.png",
-    "3. inference/inference-engine/vllm/3.模型推理.md",
     "3. inference/inference-engine/vllm/4.特性.md",
     "1. models/常见模型结构.md",
     "3. inference/基础特性/常见推理特性.md",
