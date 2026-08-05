@@ -1,7 +1,8 @@
 整体的流程如下：
 1. 读取模型配置、参数配置，并做校验
-2. 根据配置分别计算full和mamba的page_size，然后对两者做对齐pad,算出最终的page_size
-3. 通过EngineCore初始化KVCache(`_initialize_kv_caches`方法)，包括计算KV可用显存、
+2. 根据配置分别计算full和mamba的page_size，通过`Platform._align_hybrid_block_size`对两者做对齐, 算出最终的page_size
+3. 通过EngineCore初始化KVCache(`_initialize_kv_caches`方法)，包括计算KV可用显存、KVGroups分组、KVTensors划分
+4. 通过`self.model_executor.initialize_from_config(kv_cache_configs)`下发给Worker--->ModelRunner做真正的初始化：分配原始int8 buffer并reshape、通过`bind_kv_cache()`绑定到 forward context
 
 当前SGLang有双池方案，且mamba block支持bf16，vLLM当前只有一种kvblock，要full attention和linear attention都要用，同时写入kv、conv_state、ssm_state，非连续----》连续，非连续对于conv_state和ssm_state没到block size时进行pad，会造成显存浪费，连续的方案就不会浪费了，需要fia等算子支持
 
@@ -62,4 +63,5 @@ class MambaSpec(KVCacheSpec):
 
 
 #### hybrid attn的page_size对齐
+两个地方：1 `Platform._align_hybrid_block_size`根据mamba来调整full的block_size   2 
 all align none
