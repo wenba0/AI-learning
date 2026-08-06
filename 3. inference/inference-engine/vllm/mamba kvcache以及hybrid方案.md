@@ -27,7 +27,10 @@ KVCacheGroupSpec(layer_names=['language_model.model.layers.1.linear_attn', 'lang
 KVCacheGroupSpec(layer_names=['language_model.model.layers.2.linear_attn', 'language_model.model.layers.6.linear_attn', 'language_model.model.layers.10.linear_attn', 'language_model.model.layers.14.linear_attn', 'language_model.model.layers.18.linear_attn', 'language_model.model.layers.22.linear_attn'], kv_cache_spec=MambaSpec(block_size=133000, shapes=((3, 6144), (16, 128, 128)), dtypes=(torch.bfloat16, torch.float32), page_size_padded=1114112, mamba_type=<MambaAttentionBackendEnum.GDN_ATTN: 'vllm.v1.attention.backends.gdn_attn.GDNAttentionBackend'>, mamba_cache_mode='none', num_speculative_blocks=0), is_eagle_group=False),
 KVCacheGroupSpec(layer_names=['language_model.model.layers.3.self_attn.attn', 'language_model.model.layers.7.self_attn.attn', 'language_model.model.layers.11.self_attn.attn', 'language_model.model.layers.15.self_attn.attn', 'language_model.model.layers.19.self_attn.attn', 'language_model.model.layers.23.self_attn.attn'], kv_cache_spec=FullAttentionSpec(block_size=544, num_kv_heads=2, head_size=256, dtype=torch.bfloat16, kv_quant_mode=<KVQuantMode.NONE: 0>, page_size_padded=None, indexes_kv_by_block_stride=True, head_size_v=256, sliding_window=None, attention_chunk_size=None, non_causal=False), is_eagle_group=False)])
 ```
-
+注意：
+1. 当一个请求做推理是，同一个kv group里的layer共用一个block_table，但这个block_table的block是view再不同的kv tensors上
+2. 为什么要做成这种跨group的tensor共享？ 按照group_size去做kv tensors切分，被切分的层组合使用的cache大小是一样的（例如mamba 012 full3 和mamba 456 full7）,因此可以减少显存空间浪费
+3. 为什么vllm要强行对齐不同attn spec的page_size？如果强行将一个kvtensors切分为不同的page_size，每类的block数量不好确认，也会产生严重的内存碎片问题（比如64K与16K的page_size，可能会存在多个不连续的16K，无法合成一个可用的64K）
 #### 不同attn spec的page_size如何确定
 ==Mamba==
 通过gated_delta_net_state_shape函数计算shape, 然后通过`page_size = conv_state大小+ssm_state大小 = byteofdtype(conv_state_dtype)*conv_state_shape+byteofdtype(ssm_state_dtype)*ssm_state_shape`
