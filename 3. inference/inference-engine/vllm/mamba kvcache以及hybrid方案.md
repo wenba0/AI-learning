@@ -100,3 +100,7 @@ attn_block_size = kernel_block_alignment_size * cdiv(
 以上为none模式，共有all align none三种模式
 
 #### mamba如何做prefix cache
+1 none模式，相当于关闭prefix cache。不会保存过程中的cache snapshot
+`none` 模式下，某个请求某个 Mamba layer 的 cache 大小基本固定为 1 个 page。不会随着 token 增长分配更多 Mamba block，除非 speculative blocks 额外增加。
+
+2 all 模式，
