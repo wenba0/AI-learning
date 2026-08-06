@@ -6,7 +6,7 @@
 
 ~~当前SGLang有双池方案，且mamba block支持bf16，vLLM当前只有一种kvblock，要full attention和linear attention都要用，同时写入kv、conv_state、ssm_state，非连续----》连续，非连续对于conv_state和ssm_state没到block size时进行pad，会造成显存浪费，连续的方案就不会浪费了，需要fia等算子支持~~
 
-#### hybrid attn 分页管理机制
+#### 1 hybrid attn 分页管理机制
 Qwen3.5-0.8B共有24层，3层linear+一层full 循环6次
 **kvgroups如何分组的**：groups数量根据最小重复pattern的大小来的，共有4个group，因此`kv_cache_groups`中有4个`KVCacheGroupSpec`，每个group对应一种attn的spec，当前是`linear0, linear1, linear2, full_attn`循环两次，即4个group，要是模型中只有一种attn的话，就只有一个group，保证每个group内的attn语义是一样的，每个group会对应一个block_table
 **物理KVCacheTensor怎么切**：根据最小重复pattern的数量来的，`kv_cache_groups` 是逻辑分组；`kv_cache_tensors` 是 worker 真正分配显存的物理 tensor。将物理空间切分成group_size份，即6份，对于一个10层的llama，attn都是一样的，对应有1个group，物理Tensor切成10份，因为每一层的KVCache都不一样
@@ -31,7 +31,7 @@ KVCacheGroupSpec(layer_names=['language_model.model.layers.3.self_attn.attn', 'l
 1. 当一个请求做推理是，同一个kv group里的layer共用一个block_table，但这个block_table的block是view再不同的kv tensors上
 2. 为什么要做成这种跨group的tensor共享？ 按照group_size去做kv tensors切分，被切分的层组合使用的cache大小是一样的（例如mamba 012 full3 和mamba 456 full7）,因此可以减少显存空间浪费
 3. 为什么vllm要强行对齐不同attn spec的page_size？如果强行将一个kvtensors切分为不同的page_size，每类的block数量不好确认，也会产生严重的内存碎片问题（比如64K与16K的page_size，可能会存在多个不连续的16K，无法合成一个可用的64K）
-#### 不同attn spec的page_size如何确定
+#### 2 不同attn spec的page_size如何确定
 ==Mamba==
 通过gated_delta_net_state_shape函数计算shape, 然后通过`page_size = conv_state大小+ssm_state大小 = byteofdtype(conv_state_dtype)*conv_state_shape+byteofdtype(ssm_state_dtype)*ssm_state_shape`
 
@@ -85,7 +85,7 @@ class FullAttentionSpec(AttentionSpec):
             self.block_size * self.num_kv_heads * last_dim * get_dtype_size(self.dtype)  # attn_page_size_1_token即 1*2*512*2=2048
         )
 ```
-#### hybrid attn的page_size对齐
+#### 3 hybrid attn的page_size对齐
 会有两个地方涉及到对齐：
 1. `Platform._align_hybrid_block_size`根据mamba来调整full的block_size   
 2. 生成KV groups时如果还是不对齐的话通过`unify_kv_cache_spec_page_size()`对齐
@@ -99,7 +99,7 @@ attn_block_size = kernel_block_alignment_size * cdiv(
             )
 以上为none模式，共有all align none三种模式
 
-#### mamba如何做prefix cache
+#### 4 mamba如何做prefix cache
 背景：vllm初始化已经确定好了kv block_size，对于full attn来说指的是可以存放多少个token的kv，对于mamba来说没什么意义，mamba是原地更新且固定大小的cache,但是做mamba的prefix cache时会用到block_size的信息，mamba_cache_mode有三种模式，源码注释如下：
 ```python
 mamba_cache_mode: MambaCacheMode = "none"
@@ -116,11 +116,14 @@ mamba_cache_mode: MambaCacheMode = "none"
 `none` 模式下，某个请求某个 Mamba layer 的 cache 大小基本固定为 1 个 page。不会随着 token 增长分配更多 Mamba block，除非 speculative blocks 额外增加。
 
 2 all 模式，会按照block_size保存所有的cache snapshot
-例如prompt长度10000，block_size=2048, 做完prefill会保存2048、4096、6144、8192对应的cache,yijing 10000对应的临时cache，后续不断的输出到12400个token时又会额外占用一个block去存对应的cache snapshot，因此该模式下占用的block数量时N//block_size(过往block_size整数倍节点的cache snapshot)+1（最新cache）+num_speculative_blocks(mtp的数量)
+例如prompt长度10000，block_size=2048, 做完prefill会保存2048、4096、6144、8192对应的cache以及10000对应的临时cache，后续不断的输出到12400个token时又会额外占用一个block去存对应的cache snapshot，因此该模式下占用的block数量是N//block_size(过往block_size整数倍节点的cache snapshot)+1（最新cache）+num_speculative_blocks(mtp的数量)
 prefix cache：从右往左查找最长命中
 all模式好处：prefixcache命中粒度更小，但是会带来大量的显存占用，显存占用与上下文长度有关
 注意：
 1. 支持allm模式需要有对应的算子功能实现==todo==
 2. Qwen3.5 vllm-ascend不支持all模式==todo==
 
-3 align模式：
+3 align模式：会存取当前请求最邻近的block_size整数倍cache
+例如prompt长度10000，block_size=2048，做完prefill会保存8192对应的cache以及10000对应的临时cache，后续不断的输出到12400个token时会丢弃8192的cache，存储12400的cache
+因此该模式下占用的block数量是none模式的两倍
+
