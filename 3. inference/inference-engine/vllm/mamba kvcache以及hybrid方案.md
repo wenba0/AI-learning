@@ -7,22 +7,25 @@
 ~~当前SGLang有双池方案，且mamba block支持bf16，vLLM当前只有一种kvblock，要full attention和linear attention都要用，同时写入kv、conv_state、ssm_state，非连续----》连续，非连续对于conv_state和ssm_state没到block size时进行pad，会造成显存浪费，连续的方案就不会浪费了，需要fia等算子支持~~
 
 #### hybrid attn 分页管理机制
-减层为8层，3层linear+full 两次
+Qwen3.5-0.8B共有24层，3层linear+一层full 循环6次
 **kvgroups如何分组的**：groups数量根据最小重复pattern的大小来的，共有4个group，因此`kv_cache_groups`中有4个`KVCacheGroupSpec`，每个group对应一种attn的spec，当前是`linear0, linear1, linear2, full_attn`循环两次，即4个group，要是模型中只有一种attn的话，就只有一个group，保证每个group内的attn语义是一样的，每个group会对应一个block_table
-**物理KVCacheTensor怎么切**：根据最小重复pattern的数量来的，`kv_cache_groups` 是逻辑分组；`kv_cache_tensors` 是 worker 真正分配显存的物理 tensor。将物理空间切分成group_size份，即2份，对于一个10层的llama，attn都是一样的，对应有1个group，物理Tensor切成10份，因为每一层的KVCache都不一样
+**物理KVCacheTensor怎么切**：根据最小重复pattern的数量来的，`kv_cache_groups` 是逻辑分组；`kv_cache_tensors` 是 worker 真正分配显存的物理 tensor。将物理空间切分成group_size份，即6份，对于一个10层的llama，attn都是一样的，对应有1个group，物理Tensor切成10份，因为每一层的KVCache都不一样
 
 EngineCore初始化kv后打印的KVCacheConfig如下：
 ```python
- KVCacheConfig(num_blocks=13227, 
- 
- kv_cache_tensors=[KVCacheTensor(size=28226629632, shared_by=['language_model.model.layers.3.self_attn.attn', 'language_model.model.layers.0.linear_attn', 'language_model.model.layers.1.linear_attn', 'language_model.model.layers.2.linear_attn']), 
-					KVCacheTensor(size=28226629632, shared_by=['language_model.model.layers.7.self_attn.attn', 'language_model.model.layers.4.linear_attn', 'language_model.model.layers.5.linear_attn', 'language_model.model.layers.6.linear_attn'])], 
-					
-kv_cache_groups=[KVCacheGroupSpec(layer_names=['language_model.model.layers.3.self_attn.attn', 'language_model.model.layers.7.self_attn.attn'],kv_cache_spec=FullAttentionSpec(
-block_size=1024,num_kv_heads=2, head_size=256, dtype=torch.bfloat16, kv_quant_mode=<KVQuantMode.NONE: 0>, page_size_padded=2134016, head_size_v=256, sliding_window=None, attention_chunk_size=None), is_eagle_group=False), 
-				KVCacheGroupSpec(layer_names=['language_model.model.layers.0.linear_attn', 'language_model.model.layers.4.linear_attn'], kv_cache_spec=MambaSpec(block_size=133000, shapes=((3, 6144), (16, 128, 128)), dtypes=(torch.bfloat16, torch.float32), page_size_padded=2134016, mamba_type=<MambaAttentionBackendEnum.GDN_ATTN: 'vllm.v1.attention.backends.gdn_attn.GDNAttentionBackend'>, mamba_cache_mode='none', num_speculative_blocks=0), is_eagle_group=False), 
-				KVCacheGroupSpec(layer_names=['language_model.model.layers.1.linear_attn', 'language_model.model.layers.5.linear_attn'], kv_cache_spec=MambaSpec(block_size=133000, shapes=((3, 6144), (16, 128, 128)), dtypes=(torch.bfloat16, torch.float32), page_size_padded=2134016, mamba_type=<MambaAttentionBackendEnum.GDN_ATTN: 'vllm.v1.attention.backends.gdn_attn.GDNAttentionBackend'>, mamba_cache_mode='none', num_speculative_blocks=0), is_eagle_group=False), 
-				KVCacheGroupSpec(layer_names=['language_model.model.layers.2.linear_attn', 'language_model.model.layers.6.linear_attn'], kv_cache_spec=MambaSpec(block_size=133000, shapes=((3, 6144), (16, 128, 128)), dtypes=(torch.bfloat16, torch.float32), page_size_padded=2134016, mamba_type=<MambaAttentionBackendEnum.GDN_ATTN: 'vllm.v1.attention.backends.gdn_attn.GDNAttentionBackend'>, mamba_cache_mode='none', num_speculative_blocks=0), is_eagle_group=False)])
+kv_cache_config=KVCacheConfig(num_blocks=13219,
+
+kv_cache_tensors=[KVCacheTensor(size=14727446528, shared_by=['language_model.model.layers.0.linear_attn', 'language_model.model.layers.1.linear_attn', 'language_model.model.layers.2.linear_attn', 'language_model.model.layers.3.self_attn.attn'], offset=0, block_stride=0),
+KVCacheTensor(size=14727446528, shared_by=['language_model.model.layers.4.linear_attn', 'language_model.model.layers.5.linear_attn', 'language_model.model.layers.6.linear_attn', 'language_model.model.layers.7.self_attn.attn'], offset=0, block_stride=0),
+KVCacheTensor(size=14727446528, shared_by=['language_model.model.layers.8.linear_attn', 'language_model.model.layers.9.linear_attn', 'language_model.model.layers.10.linear_attn', 'language_model.model.layers.11.self_attn.attn'], offset=0, block_stride=0),
+KVCacheTensor(size=14727446528, shared_by=['language_model.model.layers.12.linear_attn', 'language_model.model.layers.13.linear_attn', 'language_model.model.layers.14.linear_attn', 'language_model.model.layers.15.self_attn.attn'], offset=0, block_stride=0),
+KVCacheTensor(size=14727446528, shared_by=['language_model.model.layers.16.linear_attn', 'language_model.model.layers.17.linear_attn', 'language_model.model.layers.18.linear_attn', 'language_model.model.layers.19.self_attn.attn'], offset=0, block_stride=0),
+KVCacheTensor(size=14727446528, shared_by=['language_model.model.layers.20.linear_attn', 'language_model.model.layers.21.linear_attn', 'language_model.model.layers.22.linear_attn', 'language_model.model.layers.23.self_attn.attn'], offset=0, block_stride=0)], 
+
+kv_cache_groups=[KVCacheGroupSpec(layer_names=['language_model.model.layers.0.linear_attn', 'language_model.model.layers.4.linear_attn', 'language_model.model.layers.8.linear_attn', 'language_model.model.layers.12.linear_attn', 'language_model.model.layers.16.linear_attn', 'language_model.model.layers.20.linear_attn'], kv_cache_spec=MambaSpec(block_size=133000, shapes=((3, 6144), (16, 128, 128)), dtypes=(torch.bfloat16, torch.float32), page_size_padded=1114112, mamba_type=<MambaAttentionBackendEnum.GDN_ATTN: 'vllm.v1.attention.backends.gdn_attn.GDNAttentionBackend'>, mamba_cache_mode='none', num_speculative_blocks=0), is_eagle_group=False),
+KVCacheGroupSpec(layer_names=['language_model.model.layers.1.linear_attn', 'language_model.model.layers.5.linear_attn', 'language_model.model.layers.9.linear_attn', 'language_model.model.layers.13.linear_attn', 'language_model.model.layers.17.linear_attn', 'language_model.model.layers.21.linear_attn'], kv_cache_spec=MambaSpec(block_size=133000, shapes=((3, 6144), (16, 128, 128)), dtypes=(torch.bfloat16, torch.float32), page_size_padded=1114112, mamba_type=<MambaAttentionBackendEnum.GDN_ATTN: 'vllm.v1.attention.backends.gdn_attn.GDNAttentionBackend'>, mamba_cache_mode='none', num_speculative_blocks=0), is_eagle_group=False),
+KVCacheGroupSpec(layer_names=['language_model.model.layers.2.linear_attn', 'language_model.model.layers.6.linear_attn', 'language_model.model.layers.10.linear_attn', 'language_model.model.layers.14.linear_attn', 'language_model.model.layers.18.linear_attn', 'language_model.model.layers.22.linear_attn'], kv_cache_spec=MambaSpec(block_size=133000, shapes=((3, 6144), (16, 128, 128)), dtypes=(torch.bfloat16, torch.float32), page_size_padded=1114112, mamba_type=<MambaAttentionBackendEnum.GDN_ATTN: 'vllm.v1.attention.backends.gdn_attn.GDNAttentionBackend'>, mamba_cache_mode='none', num_speculative_blocks=0), is_eagle_group=False),
+KVCacheGroupSpec(layer_names=['language_model.model.layers.3.self_attn.attn', 'language_model.model.layers.7.self_attn.attn', 'language_model.model.layers.11.self_attn.attn', 'language_model.model.layers.15.self_attn.attn', 'language_model.model.layers.19.self_attn.attn', 'language_model.model.layers.23.self_attn.attn'], kv_cache_spec=FullAttentionSpec(block_size=544, num_kv_heads=2, head_size=256, dtype=torch.bfloat16, kv_quant_mode=<KVQuantMode.NONE: 0>, page_size_padded=None, indexes_kv_by_block_stride=True, head_size_v=256, sliding_window=None, attention_chunk_size=None, non_causal=False), is_eagle_group=False)])
 ```
 
 #### 不同attn spec的page_size如何确定
@@ -80,7 +83,17 @@ class FullAttentionSpec(AttentionSpec):
         )
 ```
 #### hybrid attn的page_size对齐
-两个地方：1 `Platform._align_hybrid_block_size`根据mamba来调整full的block_size   2 生成KV groups时如果还是不对齐的话通过`unify_kv_cache_spec_page_size()`对齐
-all align none
+会有两个地方涉及到对齐：
+1. `Platform._align_hybrid_block_size`根据mamba来调整full的block_size   
+2. 生成KV groups时如果还是不对齐的话通过`unify_kv_cache_spec_page_size()`对齐
+**第一种对齐：**
+本来的page_size: mamba是1085440；`full_attn_block_size=1`的话full attn的page_size是2048bytes, 两者的page_size都经过pad变成$544*2048=1114112$ 
+代码路径：`interface.py Platform._align_hybrid_block_size ` 
+mamba相当于full的多少个token： 16 * cdiv(1085440, 16 * 2048)=544，full默认block_size=16,将其修改为544  
+attn_block_size = kernel_block_alignment_size * cdiv(  
+                mamba_page_size,  
+                kernel_block_alignment_size * attn_page_size_1_token,  
+            )
+以上为none模式，共有all align none三种模式
 
 #### mamba如何做prefix cache
