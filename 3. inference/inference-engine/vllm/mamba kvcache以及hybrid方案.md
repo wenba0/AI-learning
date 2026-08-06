@@ -100,7 +100,27 @@ attn_block_size = kernel_block_alignment_size * cdiv(
 以上为none模式，共有all align none三种模式
 
 #### mamba如何做prefix cache
+背景：vllm初始化已经确定好了kv block_size，对于full attn来说指的是可以存放多少个token的kv，对于mamba来说没什么意义，mamba是原地更新且固定大小的cache,但是做mamba的prefix cache时会用到block_size的信息，mamba_cache_mode有三种模式，源码注释如下：
+```python
+mamba_cache_mode: MambaCacheMode = "none"
+    """The cache strategy for Mamba layers:
+
+    - "none": set when prefix caching is disabled.
+    - "all": cache the mamba state of all tokens at position i * block_size. This is
+      the default behavior (for models that support it) when prefix caching is enabled.
+    - "align": only cache the mamba state of the last token of each scheduler step and
+      when the token is at position i * block_size.
+    """
+```
 1 none模式，相当于关闭prefix cache。不会保存过程中的cache snapshot
 `none` 模式下，某个请求某个 Mamba layer 的 cache 大小基本固定为 1 个 page。不会随着 token 增长分配更多 Mamba block，除非 speculative blocks 额外增加。
 
-2 all 模式，
+2 all 模式，会按照block_size保存所有的cache snapshot
+例如prompt长度10000，block_size=2048, 做完prefill会保存2048、4096、6144、8192对应的cache,yijing 10000对应的临时cache，后续不断的输出到12400个token时又会额外占用一个block去存对应的cache snapshot，因此该模式下占用的block数量时N//block_size(过往block_size整数倍节点的cache snapshot)+1（最新cache）+num_speculative_blocks(mtp的数量)
+prefix cache：从右往左查找最长命中
+all模式好处：prefixcache命中粒度更小，但是会带来大量的显存占用，显存占用与上下文长度有关
+注意：
+1. 支持allm模式需要有对应的算子功能实现==todo==
+2. Qwen3.5 vllm-ascend不支持all模式==todo==
+
+3 align模式：
