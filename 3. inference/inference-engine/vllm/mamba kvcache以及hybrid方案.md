@@ -127,3 +127,4 @@ all模式好处：prefixcache命中粒度更小，但是会带来大量的显存
 例如prompt长度10000，block_size=2048，做完prefill会保存8192对应的cache以及10000对应的临时cache，后续不断的输出到12400个token时会丢弃8192的cache，存储12400的cache
 因此该模式下占用的block数量是none模式的两倍
 
+5 
