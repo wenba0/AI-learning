@@ -268,12 +268,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3. inference/inference-engine/vllm/mamba kvcache以及hybrid方案.md",
+                "file": "0. foundations/常用命令.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "mamba kvcache以及hybrid方案"
+              "title": "常用命令"
             }
           }
         ],
@@ -454,12 +454,17 @@
   },
   "active": "9c23e7dada35a7af",
   "lastOpenFiles": [
+    "0. foundations/1ALLINONE.md",
+    "0. foundations/数值精度、数据格式.md",
+    "0. foundations/常用命令.md",
+    "0. foundations/通信算子.md",
+    "0. foundations/效率提升.md",
+    "3. inference/inference-engine/vllm/mamba kvcache以及hybrid方案.md",
     "3. inference/inference-engine/vllm/attention量化相关.md",
     "3. inference/inference-engine/vllm/一些材料.md",
     "3. inference/inference-engine/vllm/4.关键特性.md",
     "3. inference/inference-engine/vllm/3.模型推理.md",
     "3. inference/inference-engine/vllm/2.调度策略与KVCache管理.md",
-    "3. inference/inference-engine/vllm/mamba kvcache以及hybrid方案.md",
     "3. inference/inference-engine/vllm/1. vLLM v1 的整体架构和核心数据流.md",
     "3. inference/inference-engine/vllm/0.大纲.md",
     "1. models/各种attention.md",
@@ -473,11 +478,6 @@
     "3. inference/基础特性/常见推理特性.md",
     "1. models/LLM/Qwen3.5.md",
     "1. models/LLM/dsv4.md",
-    "0. foundations/linux命令.md",
-    "0. foundations/效率提升.md",
-    "0. foundations/通信算子.md",
-    "0. foundations/数值精度、数据格式.md",
-    "0. foundations/1ALLINONE.md",
     "4. hardware&op/利用率计算.md",
     "4. hardware&op/未命名.md",
     "assets/file-20260720115201844.png",
