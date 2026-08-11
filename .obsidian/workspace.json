@@ -268,12 +268,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3. inference/inference-engine/vllm/1. vLLM v1 的整体架构和核心数据流.md",
+                "file": "3. inference/inference-engine/vllm/2.调度策略与KVCache管理.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1. vLLM v1 的整体架构和核心数据流"
+              "title": "2.调度策略与KVCache管理"
             }
           }
         ],
@@ -338,7 +338,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "3. inference/inference-engine/vllm/1. vLLM v1 的整体架构和核心数据流.md",
+                "file": "3. inference/inference-engine/vllm/2.调度策略与KVCache管理.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -454,6 +454,7 @@
   },
   "active": "9c23e7dada35a7af",
   "lastOpenFiles": [
+    "3. inference/inference-engine/vllm/1. vLLM v1 的整体架构和核心数据流.md",
     "3. inference/inference-engine/vllm/2.调度策略与KVCache管理.md",
     "3. inference/inference-engine/vllm/mamba kvcache以及hybrid方案.md",
     "3. inference/inference-engine/vllm/attention量化相关.md",
@@ -466,7 +467,6 @@
     "0. foundations/效率提升.md",
     "3. inference/inference-engine/vllm/4.关键特性.md",
     "3. inference/inference-engine/vllm/3.模型推理.md",
-    "3. inference/inference-engine/vllm/1. vLLM v1 的整体架构和核心数据流.md",
     "3. inference/inference-engine/vllm/0.大纲.md",
     "1. models/各种attention.md",
     "assets/file-20260804102807844.png",
