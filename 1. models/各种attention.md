@@ -2,7 +2,7 @@
 [Attention进阶史（MHA, MQA, GQA, MLA） – 图神经网络公社](https://gnn.club/?p=2729)
 ### 原始attention
 softmax对行做
-每个O的输出需要当前的Q和历史所有的KV，详见[[../3. inference/inference-acceleration/kvcache相关#KVCache背景与attention计算]]，也可参考[[../3. inference/inference-acceleration/并行策略#CP]]
+每个O的输出需要当前的Q和历史所有的KV，详见[[../3. inference/推理加速/kvcache相关#KVCache背景与attention计算]]，也可参考[[../3. inference/推理加速/并行策略#CP]]
 
 ### MHA
 MHA $n*d$的hidden_states将其按头数进行切分，头数h，每个头输入为$n*\frac{d}{h}$,每个头分别计算attention之后concat起来变成$n*d$的输出结果
