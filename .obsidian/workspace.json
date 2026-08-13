@@ -282,12 +282,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "0. foundations/1ALLINONE.md",
+                "file": "3. inference/推理框架引擎/vllm/异步调度.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1ALLINONE"
+              "title": "异步调度"
             }
           }
         ],
@@ -468,12 +468,13 @@
   },
   "active": "52d424d8bbce6ae3",
   "lastOpenFiles": [
+    "0. foundations/1ALLINONE.md",
+    "3. inference/推理框架引擎/vllm/异步调度.md",
     "0. foundations/效率提升.md",
     "5. scripts/11.md",
     "0. foundations/常用命令.md",
     "3. inference/基础特性/通信算子.md",
     "3. inference/基础特性/数值精度、数据格式.md",
-    "0. foundations/1ALLINONE.md",
     "3. inference/推理框架引擎/vllm/attention量化相关.md",
     "3. inference/推理框架引擎/vllm/4.关键特性.md",
     "3. inference/推理框架引擎/vllm/一些材料.md",
@@ -499,7 +500,6 @@
     "assets/file-20260803154010865.png",
     "1. models/常见模型结构.md",
     "1. models/LLM/Qwen3.5.md",
-    "1. models/LLM/dsv4.md",
     "assets/file-20260720115201844.png",
     "assets/file-20260720112202763.png",
     "assets/file-20260720093512519.png",
@@ -513,6 +513,4 @@
     "assets/一些材料",
     "assets/1.调度策略与KVCache管理",
     "3. inference/inference-engine/vllm/assets/1.调度策略与KVCache管理",
-    "3. inference/inference-engine/vllm/assets"
-  ]
-}
+    "3. inference/inference-engine/vllm/asse
