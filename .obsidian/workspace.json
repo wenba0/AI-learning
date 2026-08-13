@@ -352,7 +352,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "3. inference/inference-engine/vllm/2.调度策略与KVCache管理.md",
+                "file": "3. inference/推理框架引擎/vllm/异步调度.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -468,19 +468,21 @@
   },
   "active": "52d424d8bbce6ae3",
   "lastOpenFiles": [
-    "0. foundations/1ALLINONE.md",
+    "3. inference/推理框架引擎/vllm/attention量化相关.md",
+    "3. inference/推理框架引擎/vllm/mamba kvcache以及hybrid方案.md",
+    "3. inference/推理框架引擎/vllm/DeepSeek V3 + MTP=2：一条请求在 vLLM v1 中的完整生命周期.md",
     "3. inference/推理框架引擎/vllm/异步调度.md",
+    "3. inference/推理框架引擎/sglang/一些材料.md",
+    "3. inference/推理框架引擎/vllm/一些材料.md",
+    "0. foundations/1ALLINONE.md",
     "0. foundations/效率提升.md",
     "5. scripts/11.md",
     "0. foundations/常用命令.md",
     "3. inference/基础特性/通信算子.md",
     "3. inference/基础特性/数值精度、数据格式.md",
-    "3. inference/推理框架引擎/vllm/attention量化相关.md",
     "3. inference/推理框架引擎/vllm/4.关键特性.md",
-    "3. inference/推理框架引擎/vllm/一些材料.md",
     "3. inference/推理框架引擎/vllm/1. vLLM v1 的整体架构和核心数据流.md",
     "3. inference/推理框架引擎/vllm/0.大纲.md",
-    "3. inference/推理框架引擎/sglang/一些材料.md",
     "3. inference/推理框架引擎/nano-vllm/nano-vllm.md",
     "3. inference/量化/dsv4量化.md",
     "3. inference/量化/qwen2.5-VL量化.md",
@@ -489,7 +491,6 @@
     "3. inference/量化/不同数据格式的量化与推理.md",
     "3. inference/基础特性/常见推理特性.md",
     "3. inference/推理框架引擎/vllm/2.调度策略与KVCache管理.md",
-    "3. inference/推理框架引擎/vllm/mamba kvcache以及hybrid方案.md",
     "3. inference/推理框架引擎/vllm/3.模型推理.md",
     "1. models/各种attention.md",
     "assets/file-20260804102807844.png",
@@ -499,7 +500,6 @@
     "assets/file-20260803155638739.png",
     "assets/file-20260803154010865.png",
     "1. models/常见模型结构.md",
-    "1. models/LLM/Qwen3.5.md",
     "assets/file-20260720115201844.png",
     "assets/file-20260720112202763.png",
     "assets/file-20260720093512519.png",
@@ -513,4 +513,6 @@
     "assets/一些材料",
     "assets/1.调度策略与KVCache管理",
     "3. inference/inference-engine/vllm/assets/1.调度策略与KVCache管理",
-    "3. inference/inference-engine/vllm/asse
+    "3. inference/inference-engine/vllm/assets"
+  ]
+}
