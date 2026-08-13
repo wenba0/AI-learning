@@ -282,12 +282,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3. inference/推理框架引擎/vllm/异步调度.md",
+                "file": "3. inference/推理框架引擎/vllm/3.模型推理.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "异步调度"
+              "title": "3.模型推理"
             }
           }
         ],
@@ -352,7 +352,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "3. inference/推理框架引擎/vllm/异步调度.md",
+                "file": "3. inference/推理框架引擎/vllm/3.模型推理.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -468,10 +468,10 @@
   },
   "active": "52d424d8bbce6ae3",
   "lastOpenFiles": [
+    "3. inference/推理框架引擎/vllm/异步调度.md",
     "3. inference/推理框架引擎/vllm/attention量化相关.md",
     "3. inference/推理框架引擎/vllm/mamba kvcache以及hybrid方案.md",
     "3. inference/推理框架引擎/vllm/DeepSeek V3 + MTP=2：一条请求在 vLLM v1 中的完整生命周期.md",
-    "3. inference/推理框架引擎/vllm/异步调度.md",
     "3. inference/推理框架引擎/sglang/一些材料.md",
     "3. inference/推理框架引擎/vllm/一些材料.md",
     "0. foundations/1ALLINONE.md",
